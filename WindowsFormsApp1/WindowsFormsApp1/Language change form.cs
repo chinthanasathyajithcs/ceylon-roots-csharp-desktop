@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Welcome : Form
+    public partial class Language_change_form : Form
     {
-        public Welcome()
+        public Language_change_form()
         {
             InitializeComponent();
-        }
-
-        private void Countinue_button_Click(object sender, EventArgs e)
-        {
-            Language_change_form langForm = new Language_change_form(); // <-- use your form class
-            langForm.Show();
-            this.Hide();
-
         }
     }
 }
