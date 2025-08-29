@@ -57,7 +57,7 @@
             // 
             // Countinue_button
             // 
-            this.Countinue_button.BackColor = System.Drawing.Color.Navy;
+            this.Countinue_button.BackColor = System.Drawing.Color.MediumVioletRed;
             this.Countinue_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Countinue_button.FlatAppearance.BorderSize = 0;
             this.Countinue_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
