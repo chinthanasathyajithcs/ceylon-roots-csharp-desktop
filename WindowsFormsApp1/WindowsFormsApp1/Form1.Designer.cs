@@ -3,7 +3,7 @@
     partial class Welcome
     {
         /// <summary>
-        /// test 2
+        /// test
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
