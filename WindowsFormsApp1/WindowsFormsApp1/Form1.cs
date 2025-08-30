@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void Countinue_button_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             Language_change_form langForm = new Language_change_form(); // <-- use your form class
             langForm.Show();
