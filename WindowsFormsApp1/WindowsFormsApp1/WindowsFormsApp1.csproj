@@ -64,6 +64,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seller - dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller - dashboard.Designer.cs">
+      <DependentUpon>Seller - dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Seller  - login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +87,6 @@
     </Compile>
     <Compile Include="Seller - Inventory.Designer.cs">
       <DependentUpon>Seller - Inventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller - dashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller - dashboard.Designer.cs">
-      <DependentUpon>Seller - dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Language change form.cs">
       <SubType>Form</SubType>
@@ -132,9 +132,6 @@
     </Compile>
     <EmbeddedResource Include="Seller  - login.resx">
       <DependentUpon>Seller  - login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller - dashboard.resx">
-      <DependentUpon>Seller - dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Seller - Inventory.resx">
       <DependentUpon>Seller - Inventory.cs</DependentUpon>
