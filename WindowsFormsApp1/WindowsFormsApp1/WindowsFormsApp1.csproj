@@ -118,6 +118,9 @@
     <EmbeddedResource Include="Seller - dashboard.resx">
       <DependentUpon>Seller - dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Seller - Inventory.resx">
+      <DependentUpon>Seller - Inventory.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
