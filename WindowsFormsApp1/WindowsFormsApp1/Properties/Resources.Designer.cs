@@ -93,6 +93,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cash {
+            get {
+                object obj = ResourceManager.GetObject("Cash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChatGPT_Image_Aug_29__2025__10_36_29_AM {
             get {
                 object obj = ResourceManager.GetObject("ChatGPT Image Aug 29, 2025, 10_36_29 AM", resourceCulture);
@@ -106,6 +116,26 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Product {
+            get {
+                object obj = ResourceManager.GetObject("Product", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stack_of_Coins_1 {
+            get {
+                object obj = ResourceManager.GetObject("Stack of Coins_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +166,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap User_6 {
             get {
                 object obj = ResourceManager.GetObject("User_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Users_1 {
+            get {
+                object obj = ResourceManager.GetObject("Users_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
