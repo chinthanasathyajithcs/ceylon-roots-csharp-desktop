@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+<<<<<<< HEAD:WindowsFormsApp1/WindowsFormsApp1/SellerDashboard.cs
 
         private void Form3_Load(object sender, EventArgs e)
         {
@@ -26,5 +27,7 @@ namespace WindowsFormsApp1
         {
 
         }
+=======
+>>>>>>> parent of fe6799c (Merge branch 'main' of https://github.com/CSharpTeam2025/winforms-starter):WindowsFormsApp1/WindowsFormsApp1/Seller - dashboard.cs
     }
 }
