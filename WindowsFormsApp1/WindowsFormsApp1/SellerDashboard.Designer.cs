@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form3
+    partial class Sdash
     {
         /// <summary>
         /// Required designer variable.
@@ -52,7 +52,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Form3
+            // Sdash
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1370, 749);
@@ -61,7 +61,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(2395, 1147);
             this.MinimumSize = new System.Drawing.Size(1364, 718);
-            this.Name = "Form3";
+            this.Name = "Sdash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

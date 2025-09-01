@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form5
+    partial class Slogin
     {
         /// <summary>
         /// Required designer variable.
@@ -51,7 +51,7 @@
             this.panel2.Size = new System.Drawing.Size(759, 749);
             this.panel2.TabIndex = 0;
             // 
-            // Form5
+            // Slogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -61,7 +61,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1386, 788);
             this.MinimumSize = new System.Drawing.Size(1386, 788);
-            this.Name = "Form5";
+            this.Name = "Slogin";
             this.Text = "Form5";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
