@@ -55,13 +55,14 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(111, 921);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(218, 69);
             this.button3.TabIndex = 3;
             this.button3.Text = "Logout";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -77,24 +78,26 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(111, 664);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(218, 69);
             this.button2.TabIndex = 2;
-            this.button2.Text = "inventory";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Text = "Inventory";
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(111, 521);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(218, 69);
             this.button1.TabIndex = 1;
-            this.button1.Text = "dashboard";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Dashboard";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
