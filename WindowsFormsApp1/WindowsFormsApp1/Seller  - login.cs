@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Slogin : Form
+    public partial class Form5 : Form
     {
-        public Slogin()
+        public Form5()
         {
             InitializeComponent();
         }

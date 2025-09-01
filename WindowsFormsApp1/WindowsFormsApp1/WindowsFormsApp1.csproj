@@ -64,23 +64,29 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="LauncherForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LauncherForm.Designer.cs">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </Compile>
+<<<<<<< HEAD
     <Compile Include="SellerDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SellerDashboard.Designer.cs">
       <DependentUpon>SellerDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sellerlogin.cs">
+    <Compile Include="Seller  - login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sellerlogin.Designer.cs">
-      <DependentUpon>Sellerlogin.cs</DependentUpon>
+=======
+    <Compile Include="Seller - dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller - dashboard.Designer.cs">
+      <DependentUpon>Seller - dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller  - login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+>>>>>>> parent of fe6799c (Merge branch 'main' of https://github.com/CSharpTeam2025/winforms-starter)
+    <Compile Include="Seller  - login.Designer.cs">
+      <DependentUpon>Seller  - login.cs</DependentUpon>
     </Compile>
     <Compile Include="History.cs">
       <SubType>Form</SubType>
@@ -123,9 +129,6 @@
     <EmbeddedResource Include="Language change form.resx">
       <DependentUpon>Language change form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LauncherForm.resx">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="paint interface.resx">
       <DependentUpon>paint interface.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,11 +142,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sellerlogin.resx">
-      <DependentUpon>Sellerlogin.cs</DependentUpon>
+    <EmbeddedResource Include="Seller  - login.resx">
+      <DependentUpon>Seller  - login.cs</DependentUpon>
+<<<<<<< HEAD
     </EmbeddedResource>
     <EmbeddedResource Include="SellerDashboard.resx">
       <DependentUpon>SellerDashboard.cs</DependentUpon>
+=======
+>>>>>>> parent of fe6799c (Merge branch 'main' of https://github.com/CSharpTeam2025/winforms-starter)
     </EmbeddedResource>
     <EmbeddedResource Include="Seller - Inventory.resx">
       <DependentUpon>Seller - Inventory.cs</DependentUpon>
@@ -178,9 +184,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2025-08-30 at 11.58.29_0467812b.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="sellerassets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
