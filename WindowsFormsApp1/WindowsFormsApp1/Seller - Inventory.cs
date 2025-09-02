@@ -21,5 +21,19 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Sdash dash = new Sdash();
+            dash.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form4 dash = new Form4();
+            dash.Show();
+            this.Hide();
+        }
     }
 }
