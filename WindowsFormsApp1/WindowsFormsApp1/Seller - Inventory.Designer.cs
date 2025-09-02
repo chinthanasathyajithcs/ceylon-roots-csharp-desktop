@@ -35,6 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.inventoryForm1 = new WindowsFormsApp1.InventoryForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -124,12 +125,20 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // inventoryForm1
+            // 
+            this.inventoryForm1.Location = new System.Drawing.Point(371, 0);
+            this.inventoryForm1.Name = "inventoryForm1";
+            this.inventoryForm1.Size = new System.Drawing.Size(1024, 787);
+            this.inventoryForm1.TabIndex = 1;
+            // 
             // Form4
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Beige;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.inventoryForm1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -156,5 +165,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private InventoryForm inventoryForm1;
     }
 }
