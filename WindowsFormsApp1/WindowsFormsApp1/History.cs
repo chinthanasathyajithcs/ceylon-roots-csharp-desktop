@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
@@ -15,6 +16,18 @@ namespace WindowsFormsApp1
         public History()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            historytwo HistoryFormtwo = new historytwo(); // <-- use your form class
+            HistoryFormtwo.Show();
+            this.Hide();
         }
     }
 }

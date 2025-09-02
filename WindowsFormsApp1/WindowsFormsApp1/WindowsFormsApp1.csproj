@@ -108,11 +108,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.cs">
+    <Compile Include="historytwo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
+    <Compile Include="historytwo.Designer.cs">
+      <DependentUpon>historytwo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -131,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="historytwo.resx">
+      <DependentUpon>historytwo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Language change form.resx">
       <DependentUpon>Language change form.cs</DependentUpon>
@@ -156,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Seller - Inventory.resx">
       <DependentUpon>Seller - Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sellerform.resx">
+      <DependentUpon>sellerform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -199,6 +205,15 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
+    <None Include="Resources\images %283%29.jpeg" />
+    <None Include="Resources\jeevanandaIMG_1681.jpg" />
+    <None Include="Resources\Weavers_of_the_Kandyan_Kings_1_70-1024x683.jpeg" />
+    <None Include="Resources\images %282%29.jpeg" />
+    <None Include="Resources\image.jpg" />
+    <None Include="Resources\caption.jpg" />
+    <None Include="Resources\raw fabrics1.PNG" />
+    <None Include="Resources\kandyan period cloth weavers.PNG" />
+    <None Include="Resources\raw fabrics.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
