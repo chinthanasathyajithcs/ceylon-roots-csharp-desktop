@@ -26,5 +26,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void Language_change_form_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
