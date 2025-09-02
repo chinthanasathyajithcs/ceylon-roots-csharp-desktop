@@ -10,37 +10,28 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Sdash : Form
+    public partial class historytwo : Form
     {
-        public Sdash()
+        public historytwo()
         {
             InitializeComponent();
         }
 
-        private void Form3_Load(object sender, EventArgs e)
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox8_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Sdash dash = new Sdash();
-            dash.Show();
-            this.Hide();
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form4 dash = new Form4();
-            dash.Show();
+            History HistoryFormone = new History(); // <-- use your form class
+            HistoryFormone.Show();
             this.Hide();
         }
     }
 }
-//test
