@@ -76,11 +76,11 @@
     <Compile Include="SellerDashboard.Designer.cs">
       <DependentUpon>SellerDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sellerlogin.cs">
+    <Compile Include="sellerform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sellerlogin.Designer.cs">
-      <DependentUpon>Sellerlogin.cs</DependentUpon>
+    <Compile Include="sellerform.Designer.cs">
+      <DependentUpon>sellerform.cs</DependentUpon>
     </Compile>
     <Compile Include="History.cs">
       <SubType>Form</SubType>
@@ -151,9 +151,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Sellerlogin.resx">
-      <DependentUpon>Sellerlogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SellerDashboard.resx">
       <DependentUpon>SellerDashboard.cs</DependentUpon>
     </EmbeddedResource>
