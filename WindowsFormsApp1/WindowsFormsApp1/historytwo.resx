@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox8.Text" xml:space="preserve">
+    <value>Looking ahead, the Sri Lankan handloom industry holds immense potential for growth with its strong foundation in tradition, adaptability to modern trends, and focus on sustainability, making it well-positioned to thrive in both local and global markets. Efforts to empower rural weavers, introduce innovative technologies, and strengthen branding will ensure that Sri Lankan handlooms remain a beacon of creativity, resilience, and cultural pride. More than just fabric, the handloom textile industry tells stories woven into every thread — from its origins in ancient kingdoms to its role in modern sustainable fashion — reflecting the enduring spirit of Sri Lanka’s artisans. Each creation embodies a legacy of tradition, artistry, and innovation, making handloom textiles a living heritage that continues to inspire generations.</value>
+  </data>
+  <data name="textBox7.Text" xml:space="preserve">
+    <value>The handloom industry in Sri Lanka is a remarkable blend of tradition and innovation. While preserving its age-old weaving techniques, the sector has embraced modern design aesthetics, eco-friendly dyes, and global fashion trends. Designers today work alongside village artisans, creating collections that highlight Sri Lanka’s heritage while appealing to international markets.The rise of sustainable fashion movements worldwide has further boosted demand for Sri Lankan handlooms, as consumers increasingly value handmade, ethical, and environmentally conscious products</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>Fabric Quality – Handwoven textiles are known for their durability and softness, achieved through meticulous weaving.Cultural Identity – Traditional motifs and natural color palettes, infused with contemporary designs, resonate with both local and global audiences.
+Customizability – The adaptability of artisans allows textiles to be produced in small or large quantities, tailored to individual needs.
+Sustainability – Rooted in rural households, the handloom sector has minimal environmental impact, making it a sustainable and ethical choice.
+
+</value>
+  </data>
 </root>

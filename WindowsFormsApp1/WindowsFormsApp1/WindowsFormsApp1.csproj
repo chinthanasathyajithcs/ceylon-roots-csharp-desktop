@@ -64,6 +64,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historythree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historythree.Designer.cs">
+      <DependentUpon>Historythree.cs</DependentUpon>
+    </Compile>
     <Compile Include="LauncherForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,13 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
+    <None Include="Resources\download.jpeg" />
+    <None Include="Resources\maxresdefault.jpg" />
+    <None Include="Resources\unnamed.jpg" />
+    <None Include="Resources\images.jpeg" />
+    <None Include="Resources\jeevanandaIMG_16811.jpg" />
+    <None Include="Resources\caption1.jpg" />
+    <None Include="Resources\333922.jpeg" />
     <None Include="Resources\images %283%29.jpeg" />
     <None Include="Resources\jeevanandaIMG_1681.jpg" />
     <None Include="Resources\Weavers_of_the_Kandyan_Kings_1_70-1024x683.jpeg" />
