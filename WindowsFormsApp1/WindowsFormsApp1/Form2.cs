@@ -16,5 +16,14 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            {
+                paint_interface paint_interface = new paint_interface();  // Create an object of Form2
+                paint_interface.Show();               // Show Form2 (non-blocking)
+                this.Hide();                // Hide Form1 (optional)
+            }
+        }
     }
 }
