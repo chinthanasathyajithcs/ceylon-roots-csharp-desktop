@@ -70,6 +70,12 @@
     <Compile Include="Historythree.Designer.cs">
       <DependentUpon>Historythree.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventoryForm.Designer.cs">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LauncherForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="historytwo.resx">
       <DependentUpon>historytwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForm.resx">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Language change form.resx">
       <DependentUpon>Language change form.cs</DependentUpon>
