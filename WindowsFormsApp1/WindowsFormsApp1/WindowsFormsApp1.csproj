@@ -241,6 +241,7 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
+    <None Include="Resources\QR.jpg" />
     <None Include="Resources\WhatsApp Image 2025-09-02 at 15.32.27_f1f9f093.jpg" />
     <None Include="Resources\download %282%29.jpeg" />
     <None Include="Resources\images %289%29.jpeg" />
