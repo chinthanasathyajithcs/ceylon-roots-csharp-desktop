@@ -58,17 +58,65 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Eagletotebags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eagletotebags.Designer.cs">
+      <DependentUpon>Eagletotebags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sldesigned.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sldesigned.Designer.cs">
+      <DependentUpon>Sldesigned.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lightweightcotton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lightweightcotton.Designer.cs">
+      <DependentUpon>Lightweightcotton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Herculesgrocery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Herculesgrocery.Designer.cs">
+      <DependentUpon>Herculesgrocery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Starboardlarge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Starboardlarge.Designer.cs">
+      <DependentUpon>Starboardlarge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form6.cs">
+    <Compile Include="Order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form6.Designer.cs">
-      <DependentUpon>Form6.cs</DependentUpon>
+    <Compile Include="Order.Designer.cs">
+      <DependentUpon>Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standardcottoncanvas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Standardcottoncanvas.Designer.cs">
+      <DependentUpon>Standardcottoncanvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Midweightcottoncanvas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Midweightcottoncanvas.Designer.cs">
+      <DependentUpon>Midweightcottoncanvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elephantdesigntotebags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elephantdesigntotebags.Designer.cs">
+      <DependentUpon>Elephantdesigntotebags.cs</DependentUpon>
     </Compile>
     <Compile Include="SellerDashboard.cs">
       <SubType>Form</SubType>
@@ -123,11 +171,35 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Eagletotebags.resx">
+      <DependentUpon>Eagletotebags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sldesigned.resx">
+      <DependentUpon>Sldesigned.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lightweightcotton.resx">
+      <DependentUpon>Lightweightcotton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Herculesgrocery.resx">
+      <DependentUpon>Herculesgrocery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Starboardlarge.resx">
+      <DependentUpon>Starboardlarge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form6.resx">
-      <DependentUpon>Form6.cs</DependentUpon>
+    <EmbeddedResource Include="Order.resx">
+      <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standardcottoncanvas.resx">
+      <DependentUpon>Standardcottoncanvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Midweightcottoncanvas.resx">
+      <DependentUpon>Midweightcottoncanvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elephantdesigntotebags.resx">
+      <DependentUpon>Elephantdesigntotebags.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
@@ -223,6 +295,186 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\beige4.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\beige1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black12.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black13.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brown11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oink21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oink22.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oink23.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\srilanka3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant3.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant5.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant4.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant6.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\srilanka4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant31.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant51.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elephant1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green021.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purple3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLblue.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Slgreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLblue1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Slpink.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLgrey.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLorange.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLred.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue5.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink5.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black5.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink51.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow51.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\beige31.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grey3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purple2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue4.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red4.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purple4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

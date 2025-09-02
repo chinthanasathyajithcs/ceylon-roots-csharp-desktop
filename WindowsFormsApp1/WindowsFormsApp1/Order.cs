@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form6 : Form
+    public partial class Order : Form
     {
-        public Form6()
+        public Order()
         {
             InitializeComponent();
         }
@@ -93,6 +93,11 @@ namespace WindowsFormsApp1
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
         {
 
         }
