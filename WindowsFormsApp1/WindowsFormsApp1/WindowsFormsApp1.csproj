@@ -157,6 +157,9 @@
     <EmbeddedResource Include="Seller - Inventory.resx">
       <DependentUpon>Seller - Inventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="sellerform.resx">
+      <DependentUpon>sellerform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
