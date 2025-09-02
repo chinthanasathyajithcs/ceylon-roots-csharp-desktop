@@ -16,5 +16,19 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string f = @"C:\\Users\\Welcome\\Downloads\\Sri Lankan Handloom Industry _ Skilled weavers.mp4";
+            axWindowsMediaPlayer1.URL = f;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            historytwo HistoryFormtwo = new historytwo(); // <-- use your form class
+            HistoryFormtwo.Show();
+            this.Hide();
+        }
     }
 }

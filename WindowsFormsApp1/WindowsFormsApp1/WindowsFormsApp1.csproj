@@ -138,6 +138,9 @@
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historythree.resx">
+      <DependentUpon>Historythree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="historytwo.resx">
       <DependentUpon>historytwo.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,7 +206,25 @@
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2025-08-30 at 11.58.29_0467812b.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Cash.png" />
     <Content Include="assets\Product.png" />
@@ -211,6 +232,16 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
+    <None Include="Resources\download %282%29.jpeg" />
+    <None Include="Resources\images %289%29.jpeg" />
+    <None Include="Resources\images %286%29.jpeg" />
+    <None Include="Resources\images %284%29.jpeg" />
+    <None Include="Resources\7c72a9f4bc7d3638ff1d4bae33a2dfb1.jpg" />
+    <None Include="Resources\Capture.PNG" />
+    <None Include="Resources\images %287%29.jpeg" />
+    <None Include="Resources\images %285%29.jpeg" />
+    <None Include="Resources\images %281%29.jpeg" />
+    <None Include="Resources\download %281%29.jpeg" />
     <None Include="Resources\download.jpeg" />
     <None Include="Resources\maxresdefault.jpg" />
     <None Include="Resources\unnamed.jpg" />
