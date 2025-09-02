@@ -129,7 +129,7 @@
             // 
             this.inventoryForm1.Location = new System.Drawing.Point(371, 0);
             this.inventoryForm1.Name = "inventoryForm1";
-            this.inventoryForm1.Size = new System.Drawing.Size(1024, 787);
+            this.inventoryForm1.Size = new System.Drawing.Size(999, 749);
             this.inventoryForm1.TabIndex = 1;
             // 
             // Form4
