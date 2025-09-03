@@ -83,6 +83,14 @@
     <Compile Include="customer.Designer.cs">
       <DependentUpon>customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Eagletotebags.cs" />
+    <Compile Include="Eagletotebags.Designer.cs">
+      <DependentUpon>Eagletotebags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elephantdesigntotebags.cs" />
+    <Compile Include="Elephantdesigntotebags.Designer.cs">
+      <DependentUpon>Elephantdesigntotebags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +109,10 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Herculesgrocery.cs" />
+    <Compile Include="Herculesgrocery.Designer.cs">
+      <DependentUpon>Herculesgrocery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Historythree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +130,18 @@
     </Compile>
     <Compile Include="LauncherForm.Designer.cs">
       <DependentUpon>LauncherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lightweightcotton.cs" />
+    <Compile Include="Lightweightcotton.Designer.cs">
+      <DependentUpon>Lightweightcotton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Midweightcottoncanvas.cs" />
+    <Compile Include="Midweightcottoncanvas.Designer.cs">
+      <DependentUpon>Midweightcottoncanvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs" />
+    <Compile Include="Order.Designer.cs">
+      <DependentUpon>Order.cs</DependentUpon>
     </Compile>
     <Compile Include="SellerDashboard.cs">
       <SubType>Form</SubType>
@@ -163,6 +187,18 @@
     <Compile Include="historytwo.Designer.cs">
       <DependentUpon>historytwo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sldesigned.cs" />
+    <Compile Include="Sldesigned.Designer.cs">
+      <DependentUpon>Sldesigned.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Standardcottoncanvas.cs" />
+    <Compile Include="Standardcottoncanvas.Designer.cs">
+      <DependentUpon>Standardcottoncanvas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Starboardlarge.cs" />
+    <Compile Include="Starboardlarge.Designer.cs">
+      <DependentUpon>Starboardlarge.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +208,12 @@
     <EmbeddedResource Include="customer.resx">
       <DependentUpon>customer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Eagletotebags.resx">
+      <DependentUpon>Eagletotebags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elephantdesigntotebags.resx">
+      <DependentUpon>Elephantdesigntotebags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Herculesgrocery.resx">
+      <DependentUpon>Herculesgrocery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
@@ -198,6 +243,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LauncherForm.resx">
       <DependentUpon>LauncherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lightweightcotton.resx">
+      <DependentUpon>Lightweightcotton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Midweightcottoncanvas.resx">
+      <DependentUpon>Midweightcottoncanvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order.resx">
+      <DependentUpon>Order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="paint interface.resx">
       <DependentUpon>paint interface.cs</DependentUpon>
@@ -220,6 +274,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="sellerform.resx">
       <DependentUpon>sellerform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sldesigned.resx">
+      <DependentUpon>Sldesigned.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Standardcottoncanvas.resx">
+      <DependentUpon>Standardcottoncanvas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Starboardlarge.resx">
+      <DependentUpon>Starboardlarge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
