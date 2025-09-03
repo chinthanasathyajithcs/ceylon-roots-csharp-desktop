@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
         {
             string f = @"C:\\Users\\Welcome\\Downloads\\Sri Lankan Handloom Industry _ Skilled weavers.mp4";
             axWindowsMediaPlayer1.URL = f;
-            axWindowsMediaPlayer1.Ctlcontrols.play();
+            //axWindowsMediaPlayer1.Ctlcontrols.play();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

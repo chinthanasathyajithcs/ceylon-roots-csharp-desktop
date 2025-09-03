@@ -282,13 +282,6 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
-    <Content Include="Databaseproject.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Databaseproject_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Databaseproject.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\delivery.jpg" />
     <None Include="Resources\QR.jpg" />
     <None Include="Resources\WhatsApp Image 2025-09-02 at 15.32.27_f1f9f093.jpg" />
