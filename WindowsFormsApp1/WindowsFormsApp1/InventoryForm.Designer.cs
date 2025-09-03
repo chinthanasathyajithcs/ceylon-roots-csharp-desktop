@@ -125,6 +125,7 @@
             this.inventory_clear.TabIndex = 17;
             this.inventory_clear.Text = "CLEAR";
             this.inventory_clear.UseVisualStyleBackColor = false;
+            this.inventory_clear.Click += new System.EventHandler(this.inventory_clear_Click);
             // 
             // inventory_delete
             // 
