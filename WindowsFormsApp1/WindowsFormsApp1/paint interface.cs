@@ -315,7 +315,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Saved as {currentImagePath}");
 
                 // Open Form2 with the saved image
-                Form2 nextPage = new Form2(currentImagePath);
+                Form3 nextPage = new Form3(currentImagePath);
                 nextPage.Show();
                 this.Hide();
             }
@@ -324,6 +324,17 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Failed to save image: " + ex.Message);
             }
         }
+        // Add this DllImport to bring Paint to foreground
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        private const int SW_RESTORE = 9;
+
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
     }
 }
