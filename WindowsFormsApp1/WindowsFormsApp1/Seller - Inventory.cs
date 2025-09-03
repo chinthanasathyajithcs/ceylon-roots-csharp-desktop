@@ -34,6 +34,6 @@ namespace WindowsFormsApp1
             Form4 dash = new Form4();
             dash.Show();
             this.Hide();
-        }
+        } //test1
     }
 }
