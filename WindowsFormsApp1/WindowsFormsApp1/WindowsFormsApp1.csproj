@@ -169,6 +169,12 @@
     <Compile Include="historytwo.Designer.cs">
       <DependentUpon>historytwo.cs</DependentUpon>
     </Compile>
+    <Compile Include="shopForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="shopForm.Designer.cs">
+      <DependentUpon>shopForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="sellerform.resx">
       <DependentUpon>sellerform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shopForm.resx">
+      <DependentUpon>shopForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>

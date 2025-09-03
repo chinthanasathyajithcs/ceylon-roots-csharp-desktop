@@ -32,8 +32,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.shopForm1 = new WindowsFormsApp1.shopForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,11 +73,19 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.shopForm1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(376, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(994, 749);
             this.panel3.TabIndex = 1;
+            // 
+            // shopForm1
+            // 
+            this.shopForm1.Location = new System.Drawing.Point(0, 0);
+            this.shopForm1.Name = "shopForm1";
+            this.shopForm1.Size = new System.Drawing.Size(994, 749);
+            this.shopForm1.TabIndex = 0;
             // 
             // customerinterface
             // 
@@ -93,6 +103,7 @@
             this.Load += new System.EventHandler(this.customerinterface_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -103,5 +114,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3;
+        private shopForm shopForm1;
     }
 }
