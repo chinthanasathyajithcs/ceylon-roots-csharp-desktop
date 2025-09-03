@@ -29,5 +29,10 @@ namespace WindowsFormsApp1
             HistoryFormtwo.Show();
             this.Hide();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
