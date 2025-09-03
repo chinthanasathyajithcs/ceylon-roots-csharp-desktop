@@ -83,6 +83,12 @@
     <Compile Include="customer.Designer.cs">
       <DependentUpon>customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="customerinterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customerinterface.Designer.cs">
+      <DependentUpon>customerinterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </Compile>
     <EmbeddedResource Include="customer.resx">
       <DependentUpon>customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customerinterface.resx">
+      <DependentUpon>customerinterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -282,6 +291,73 @@
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
     <Content Include="assets\User_6.png" />
+    <Content Include="Resources\customerintfc pics\beige1.jpg" />
+    <Content Include="Resources\customerintfc pics\beige3.jpg" />
+    <Content Include="Resources\customerintfc pics\beige31.jpg" />
+    <Content Include="Resources\customerintfc pics\beige4.jpeg" />
+    <Content Include="Resources\customerintfc pics\black1.jpg" />
+    <Content Include="Resources\customerintfc pics\black11.jpg" />
+    <Content Include="Resources\customerintfc pics\black12.jpg" />
+    <Content Include="Resources\customerintfc pics\black13.jpg" />
+    <Content Include="Resources\customerintfc pics\black2.jpg" />
+    <Content Include="Resources\customerintfc pics\blue tote bag.jpg" />
+    <Content Include="Resources\customerintfc pics\blue01.jpg" />
+    <Content Include="Resources\customerintfc pics\blue011.jpg" />
+    <Content Include="Resources\customerintfc pics\blue2.jpg" />
+    <Content Include="Resources\customerintfc pics\blue2.png" />
+    <Content Include="Resources\customerintfc pics\blue3.jpg" />
+    <Content Include="Resources\customerintfc pics\blue4.jpeg" />
+    <Content Include="Resources\customerintfc pics\blue5.jpeg" />
+    <Content Include="Resources\customerintfc pics\blue6.jpg" />
+    <Content Include="Resources\customerintfc pics\brown.jpg" />
+    <Content Include="Resources\customerintfc pics\brown1.jpg" />
+    <Content Include="Resources\customerintfc pics\brown11.jpg" />
+    <Content Include="Resources\customerintfc pics\elephant1.jpeg" />
+    <Content Include="Resources\customerintfc pics\elephant3.jpeg" />
+    <Content Include="Resources\customerintfc pics\elephant31.jpeg" />
+    <Content Include="Resources\customerintfc pics\elephant5.jpeg" />
+    <Content Include="Resources\customerintfc pics\elephant51.jpeg" />
+    <Content Include="Resources\customerintfc pics\elephant6.jpeg" />
+    <Content Include="Resources\customerintfc pics\green02.png" />
+    <Content Include="Resources\customerintfc pics\green021.png" />
+    <Content Include="Resources\customerintfc pics\green2.png" />
+    <Content Include="Resources\customerintfc pics\green21.png" />
+    <Content Include="Resources\customerintfc pics\green4.jpg" />
+    <Content Include="Resources\customerintfc pics\green5.jpg" />
+    <Content Include="Resources\customerintfc pics\grey1.jpg" />
+    <Content Include="Resources\customerintfc pics\grey2.jpg" />
+    <Content Include="Resources\customerintfc pics\grey3.jpg" />
+    <Content Include="Resources\customerintfc pics\oink2.jpg" />
+    <Content Include="Resources\customerintfc pics\oink21.jpg" />
+    <Content Include="Resources\customerintfc pics\oink22.jpg" />
+    <Content Include="Resources\customerintfc pics\oink23.jpg" />
+    <Content Include="Resources\customerintfc pics\orange2.png" />
+    <Content Include="Resources\customerintfc pics\pink.jpg" />
+    <Content Include="Resources\customerintfc pics\pink1.jpg" />
+    <Content Include="Resources\customerintfc pics\pink11.jpg" />
+    <Content Include="Resources\customerintfc pics\pink2.png" />
+    <Content Include="Resources\customerintfc pics\pink3.jpg" />
+    <Content Include="Resources\customerintfc pics\pink5.jpeg" />
+    <Content Include="Resources\customerintfc pics\purple2.jpg" />
+    <Content Include="Resources\customerintfc pics\purple3.jpg" />
+    <Content Include="Resources\customerintfc pics\purple4.jpg" />
+    <Content Include="Resources\customerintfc pics\red2.jpg" />
+    <Content Include="Resources\customerintfc pics\red21.jpg" />
+    <Content Include="Resources\customerintfc pics\red3.jpg" />
+    <Content Include="Resources\customerintfc pics\red4.jpeg" />
+    <Content Include="Resources\customerintfc pics\red5.jpg" />
+    <Content Include="Resources\customerintfc pics\SLblue.jpg" />
+    <Content Include="Resources\customerintfc pics\SLblue1.jpg" />
+    <Content Include="Resources\customerintfc pics\Slgreen.jpg" />
+    <Content Include="Resources\customerintfc pics\SLgrey.jpg" />
+    <Content Include="Resources\customerintfc pics\SLorange.jpg" />
+    <Content Include="Resources\customerintfc pics\Slpink.jpg" />
+    <Content Include="Resources\customerintfc pics\SLred.jpg" />
+    <Content Include="Resources\customerintfc pics\srilanka3.jpg" />
+    <Content Include="Resources\customerintfc pics\srilanka4.jpg" />
+    <Content Include="Resources\customerintfc pics\yellow2.jpg" />
+    <Content Include="Resources\customerintfc pics\yellow3.jpg" />
+    <Content Include="Resources\customerintfc pics\yellow4.jpg" />
     <None Include="Resources\delivery.jpg" />
     <None Include="Resources\QR.jpg" />
     <None Include="Resources\WhatsApp Image 2025-09-02 at 15.32.27_f1f9f093.jpg" />
