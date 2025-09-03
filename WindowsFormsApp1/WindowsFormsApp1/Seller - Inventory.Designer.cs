@@ -127,16 +127,16 @@
             // 
             // inventoryForm1
             // 
-            this.inventoryForm1.Location = new System.Drawing.Point(371, 0);
+            this.inventoryForm1.Location = new System.Drawing.Point(372, 0);
             this.inventoryForm1.Name = "inventoryForm1";
-            this.inventoryForm1.Size = new System.Drawing.Size(999, 749);
+            this.inventoryForm1.Size = new System.Drawing.Size(998, 749);
             this.inventoryForm1.TabIndex = 1;
             // 
             // Form4
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Beige;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(217)))), ((int)(((byte)(196)))));
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.inventoryForm1);
             this.Controls.Add(this.panel1);

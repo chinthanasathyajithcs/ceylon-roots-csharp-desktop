@@ -80,5 +80,10 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        private void InventoryForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
