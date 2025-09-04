@@ -33,46 +33,6 @@ namespace WindowsFormsApp1
 
         public string DateUpdate { set; get; }
 
-        public List<productsList> productListData()
-{
-    List<productsList> listData = new List<productsList>();
-
-    using (SqlConnection connect = new SqlConnection(connection))
-    {
-        connect.Open();
-        string selectData = "SELECT * FROM products";
-
-        using (SqlCommand cmd = new SqlCommand(selectData, connect))
-        {
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                productsList pData = new productsList();
-                pData.ID = (int)reader["id"];
-                pData.productID = reader["productid"].ToString();
-                pData.productName = reader["productname"].ToString();
-                pData.category = reader["category"].ToString();
-                pData.stock = reader["stock"].ToString();
-                pData.price = reader["price"].ToString();
-                pData.status = reader["status"].ToString();
-                pData.image = reader["image"].ToString();
-
-                // Date fields (check for DBNull to avoid exceptions)
-                pData.DateInsert = reader["date_insert"] != DBNull.Value
-                    ? ((DateTime)reader["date_insert"]).ToString("MM-dd-yyyy")
-                    : null;
-                pData.DateUpdate = reader["date_update"] != DBNull.Value
-                    ? ((DateTime)reader["date_update"]).ToString("MM-dd-yyyy")
-                    : null;
-
-                listData.Add(pData);
-            }
-        }
-    }
-
-    return listData;
-}
-
 
     }
 
