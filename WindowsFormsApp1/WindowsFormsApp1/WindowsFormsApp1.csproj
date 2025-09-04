@@ -77,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="sellercategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="sellercategories.Designer.cs">
+      <DependentUpon>sellercategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="sellercategories.resx">
+      <DependentUpon>sellercategories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="customer.resx">
       <DependentUpon>customer.cs</DependentUpon>
     </EmbeddedResource>
