@@ -56,5 +56,10 @@ namespace WindowsFormsApp1
         {
             new Form4().Show();
         }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            new customer().Show();
+        }
     }
 }
