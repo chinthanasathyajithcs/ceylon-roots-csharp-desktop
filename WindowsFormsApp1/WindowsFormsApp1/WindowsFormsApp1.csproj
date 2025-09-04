@@ -125,6 +125,7 @@
     <Compile Include="LauncherForm.Designer.cs">
       <DependentUpon>LauncherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="productList.cs" />
     <Compile Include="SellerDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

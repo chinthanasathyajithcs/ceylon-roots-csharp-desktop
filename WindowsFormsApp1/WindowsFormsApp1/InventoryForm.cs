@@ -175,5 +175,30 @@ namespace WindowsFormsApp1
         {
             clearFields();
         }
+
+        private int getID = 0;
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = (int)row.Cells[0].Value;
+                inventory_productID.Text = row.Cells[1].Value.ToString();
+                inventory_productName.Text = row.Cells[2].Value.ToString();
+                inventory_category.Text = row.Cells[3].Value.ToString();
+                inventory_stock.Text = row.Cells[4].Value.ToString();
+                inventory_price.Text = row.Cells[5].Value.ToString();
+                inventory_status.Text = row.Cells[6].Value.ToString();
+                
+
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
