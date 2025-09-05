@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.inventory_productID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.categories_deleteBtn = new System.Windows.Forms.Button();
+            this.categories_clearBtn = new System.Windows.Forms.Button();
+            this.categories_updateBtn = new System.Windows.Forms.Button();
+            this.categories_addBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.inventory_category = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.categories_category = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.categories_status = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -47,65 +47,76 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.inventory_category);
+            this.panel1.Controls.Add(this.categories_status);
+            this.panel1.Controls.Add(this.categories_deleteBtn);
+            this.panel1.Controls.Add(this.categories_clearBtn);
+            this.panel1.Controls.Add(this.categories_updateBtn);
+            this.panel1.Controls.Add(this.categories_addBtn);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.inventory_productID);
+            this.panel1.Controls.Add(this.categories_category);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(307, 723);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // categories_deleteBtn
             // 
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(334, 13);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(648, 723);
-            this.panel2.TabIndex = 1;
+            this.categories_deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.categories_deleteBtn.FlatAppearance.BorderSize = 0;
+            this.categories_deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categories_deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_deleteBtn.ForeColor = System.Drawing.Color.White;
+            this.categories_deleteBtn.Location = new System.Drawing.Point(170, 265);
+            this.categories_deleteBtn.Name = "categories_deleteBtn";
+            this.categories_deleteBtn.Size = new System.Drawing.Size(112, 41);
+            this.categories_deleteBtn.TabIndex = 9;
+            this.categories_deleteBtn.Text = "Delete";
+            this.categories_deleteBtn.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // categories_clearBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "All Categories";
+            this.categories_clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.categories_clearBtn.FlatAppearance.BorderSize = 0;
+            this.categories_clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categories_clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_clearBtn.ForeColor = System.Drawing.Color.White;
+            this.categories_clearBtn.Location = new System.Drawing.Point(20, 265);
+            this.categories_clearBtn.Name = "categories_clearBtn";
+            this.categories_clearBtn.Size = new System.Drawing.Size(112, 41);
+            this.categories_clearBtn.TabIndex = 8;
+            this.categories_clearBtn.Text = "Clear";
+            this.categories_clearBtn.UseVisualStyleBackColor = false;
+            this.categories_clearBtn.Click += new System.EventHandler(this.categories_clearBtn_Click);
             // 
-            // dataGridView1
+            // categories_updateBtn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 35);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(616, 672);
-            this.dataGridView1.TabIndex = 3;
+            this.categories_updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.categories_updateBtn.FlatAppearance.BorderSize = 0;
+            this.categories_updateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categories_updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_updateBtn.ForeColor = System.Drawing.Color.White;
+            this.categories_updateBtn.Location = new System.Drawing.Point(170, 193);
+            this.categories_updateBtn.Name = "categories_updateBtn";
+            this.categories_updateBtn.Size = new System.Drawing.Size(112, 41);
+            this.categories_updateBtn.TabIndex = 7;
+            this.categories_updateBtn.Text = "Update";
+            this.categories_updateBtn.UseVisualStyleBackColor = false;
             // 
-            // inventory_productID
+            // categories_addBtn
             // 
-            this.inventory_productID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventory_productID.Location = new System.Drawing.Point(20, 53);
-            this.inventory_productID.Name = "inventory_productID";
-            this.inventory_productID.Size = new System.Drawing.Size(262, 24);
-            this.inventory_productID.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.label2.Location = new System.Drawing.Point(17, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Category";
+            this.categories_addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.categories_addBtn.FlatAppearance.BorderSize = 0;
+            this.categories_addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categories_addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_addBtn.ForeColor = System.Drawing.Color.White;
+            this.categories_addBtn.Location = new System.Drawing.Point(20, 193);
+            this.categories_addBtn.Name = "categories_addBtn";
+            this.categories_addBtn.Size = new System.Drawing.Size(112, 41);
+            this.categories_addBtn.TabIndex = 6;
+            this.categories_addBtn.Text = "Add";
+            this.categories_addBtn.UseVisualStyleBackColor = false;
+            this.categories_addBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -118,73 +129,65 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Status";
             // 
-            // inventory_category
+            // categories_category
             // 
-            this.inventory_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventory_category.FormattingEnabled = true;
-            this.inventory_category.Items.AddRange(new object[] {
-            "Cloth items",
-            "Crafts"});
-            this.inventory_category.Location = new System.Drawing.Point(20, 120);
-            this.inventory_category.Name = "inventory_category";
-            this.inventory_category.Size = new System.Drawing.Size(262, 26);
-            this.inventory_category.TabIndex = 5;
+            this.categories_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_category.Location = new System.Drawing.Point(20, 53);
+            this.categories_category.Name = "categories_category";
+            this.categories_category.Size = new System.Drawing.Size(262, 24);
+            this.categories_category.TabIndex = 3;
             // 
-            // button1
+            // label2
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(20, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 41);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.label2.Location = new System.Drawing.Point(17, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Category";
             // 
-            // button2
+            // panel2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(170, 193);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 41);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = false;
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(334, 13);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(648, 723);
+            this.panel2.TabIndex = 1;
             // 
-            // button3
+            // dataGridView1
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(170, 265);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 41);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(616, 672);
+            this.dataGridView1.TabIndex = 3;
             // 
-            // button4
+            // label1
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(20, 265);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 41);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Clear";
-            this.button4.UseVisualStyleBackColor = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "All Categories";
+            // 
+            // categories_status
+            // 
+            this.categories_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_status.FormattingEnabled = true;
+            this.categories_status.Items.AddRange(new object[] {
+            "Available",
+            "Unavailable"});
+            this.categories_status.Location = new System.Drawing.Point(20, 120);
+            this.categories_status.Name = "categories_status";
+            this.categories_status.Size = new System.Drawing.Size(262, 26);
+            this.categories_status.TabIndex = 11;
+            this.categories_status.SelectedIndexChanged += new System.EventHandler(this.inventory_status_SelectedIndexChanged);
             // 
             // sellercategories
             // 
@@ -210,12 +213,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox inventory_productID;
+        private System.Windows.Forms.TextBox categories_category;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox inventory_category;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button categories_addBtn;
+        private System.Windows.Forms.Button categories_deleteBtn;
+        private System.Windows.Forms.Button categories_clearBtn;
+        private System.Windows.Forms.Button categories_updateBtn;
+        private System.Windows.Forms.ComboBox categories_status;
     }
 }

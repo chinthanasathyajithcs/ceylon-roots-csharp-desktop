@@ -288,9 +288,6 @@
             // 
             this.inventory_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inventory_category.FormattingEnabled = true;
-            this.inventory_category.Items.AddRange(new object[] {
-            "Cloth items",
-            "Crafts"});
             this.inventory_category.Location = new System.Drawing.Point(133, 129);
             this.inventory_category.Name = "inventory_category";
             this.inventory_category.Size = new System.Drawing.Size(189, 26);

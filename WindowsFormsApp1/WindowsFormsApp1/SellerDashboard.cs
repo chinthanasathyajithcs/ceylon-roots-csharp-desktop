@@ -29,17 +29,29 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Sdash dash = new Sdash();
-            dash.Show();
-            this.Hide();
 
+            userControl12.Visible = true;        
+            inventoryForm1.Visible = false;
+            sellercategories1.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form4 dash = new Form4();
-            dash.Show();
-            this.Hide();
+            userControl12.Visible = false;
+            inventoryForm1.Visible = true;
+            sellercategories1.Visible = false;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            userControl12.Visible = false;
+            inventoryForm1.Visible = false; 
+            sellercategories1.Visible = true;
+        }
+
+        private void sellercategories1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
