@@ -117,4 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAABNFJREFUaEPt
+        mu9vU1UYx5971653LGWlrrTV/nC06yZiwtwSjCAU4ypv3IqJW9AUFmWJxhg1MTE6hb2cIoIvfLGEREiU
+        RN4wQ3TDF3CXlqRFpI1CWKMR2Ca+XOs/MPOt9yQ3Z+16S0/XonuST9b2nnvP8z3nOc9zejqidft/2qNE
+        tJ3/8EGxMBGdlyRpucVmywC8JqLbRPQ2Edn4GxrN4OBlON7/4cfJ966ll1+d+m5x//EvMuDAV2eyjs5Q
+        nIiWNLENaQifpZ2vv5GAgIFPjyXMijJHRDkiUjVyXc/1q9HjJzKSLM83YshhJtL/iriec4QKo54homiR
+        dqe9fX2z0c9PpLVQa6gwG3dtffwqZsLZ3X0BzpZx8A5CbqPbnSKiEf5ivcyGMHnz0mwO4aTNRDkb7xka
+        no2MfQQhCLmGsBFHKFRYF6bm5psGF3HY5vNdf+XM139q4dUQNoWRRaggZPiLJSyMzAbxWlquv8EROIRQ
+        IaKT/PVSZrIofzWSkLBZUbJwCOFVZOFiwe/hOERER9kAaEKOcpxHPcJa4p5XtbEH30bHeliI4C/qiP5a
+        kywttlnkjJ4ed4u6t8N6mQnBQOA948WtNnWi35N+6ynnLeHrB53i4VdGu5f1TEQ8he1HYWRl+e5MrDPH
+        tykFE4L7X37ioSn+OmvD+1KV4YF8J4d7HQmJKKdftDaLaYXYYjy2WUnphSBlB+xKgm9XcyEXD4XQAbYe
+        I9iGYB+ldZrBLPEO6TkV9d/TstudyNiRlLaNicoS/cq3XSshLH6RqVDUTssSzfPO8JyK+lntwPYF972D
+        1y6rOcW3rbkQgFDQEsAgMhFETA765/h2xehuV65ib6ZlMLD05Qu+n/h2SA4GC6wxKyYEjPY64i6rORmw
+        K/FzQ4EF/vpqvL/LlUQG27Z5w8VSA7BmQmqNNnMIPTFWLyF7O6xYQ+KKYr2EDG+zY0bwlUCYrZpSawVS
+        udBtPhYd38la8Nk+z29adhNi28UI6cpNx4Jl6wyPyFoSrkTIu087LzVJtCAR3X2ttz0xfTCYR5qViP4G
+        bRY5jc/4+0pRFyHHnvf8TkT5b3qc6fQzvnyzRPfaW0xxr2JKLe0LLIOdm5TZgN2yYl9VCpG1xLAQpMuo
+        q1VlTkMQRvRsjzPDPru227tg9HmgLkIiwY1JjDhzGjRJtPjjjoez7P3Pu72LiklK8veWYoenNSmqlhgW
+        8u3QlgU4rhfC80FwU6KS0BJZFA0LAXBSH148EDrR/4ih7y1gbI/7hqhaEt7la53hOyjFdCyI7yl5fTjp
+        Z6OSQQEii+I4ppfvYDUmB/xzUhExlc4GQ1QKrlgIOBJ2/4F6wsQgc1lMUpZvZ4S6CgHazMyPeq2q3Sxn
+        UCD5NkYQlYLHB7raDK8RHoiBI/c7G8C+wYQFX7WQk+UOFIwwc7BzxWdGEZWCVRFCquE/I0RULVHPvtRh
+        eEtRC0TVkvvKWCI5N7wlL+IcWP0+FlxxCrjWaLVktZ/zylrd1wjASWSRny0qMvWHWPAX/sHVMjnoz34S
+        8WQYz3ZYVUanXYnjQJyBQ0D8reaMy4Yp1XfIc7jPkdA7AZ50t6h6RwBO7vEsLUT0v70Xzo219MpA8ePB
+        wTf/c7dhw/+R6Dvk4R1goEPekXVbtwfN/gE3gAwAss5hKAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>“I was looking for something truly Sri Lankan to take home, and this tote was perfect. The design reminds me of my trip, and I love telling my friends it was made by local artists.” 
+-Anna, Germany-
+</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>“I absolutely love my tote bag! The design feels so unique and I get compliments everywhere I go. Knowing that it’s handmade by Sri Lankan artists makes it even more special it feels like I’m carrying a piece of culture with me every day.” 
+-Nadeesha, Colombo-</value>
+  </data>
 </root>

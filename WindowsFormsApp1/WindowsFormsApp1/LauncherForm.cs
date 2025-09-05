@@ -61,5 +61,10 @@ namespace WindowsFormsApp1
         {
             new customer().Show();
         }
+
+        private void shop_Click(object sender, EventArgs e)
+        {
+            new customerinterface().Show();
+        }
     }
 }

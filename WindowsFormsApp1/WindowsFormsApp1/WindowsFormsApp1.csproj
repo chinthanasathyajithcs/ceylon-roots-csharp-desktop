@@ -297,7 +297,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Cash.png" />
+    <Content Include="assets\Paper Bag_3.png" />
+    <Content Include="assets\Paper Bag_4.png" />
     <Content Include="assets\Product.png" />
+    <Content Include="assets\Shopping Bag.png" />
+    <Content Include="assets\Shopping Bag_1.png" />
     <Content Include="assets\Stack of Coins_1.png" />
     <Content Include="assets\Users_1.png" />
     <Content Include="assets\User_4.png" />
