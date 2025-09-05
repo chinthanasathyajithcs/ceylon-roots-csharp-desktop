@@ -169,7 +169,10 @@ namespace WindowsFormsApp1
             MessageBox.Show(message, " Thank you for shopping with us!");
         }
 
-    
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
+    }
     }
 
