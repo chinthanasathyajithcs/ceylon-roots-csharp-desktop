@@ -182,6 +182,7 @@ namespace WindowsFormsApp1
             inventory_price.Clear();
             inventory_status.SelectedIndex = -1;
             pictureBox1.Image = null;
+            getID = 0;
         }
         
         
@@ -212,6 +213,14 @@ namespace WindowsFormsApp1
                 inventory_price.Text = row.Cells[5].Value.ToString();
                 inventory_status.Text = row.Cells[6].Value.ToString();
                 
+                string imagePath = row.Cells[7].Value.ToString();
+
+                try
+                {
+
+                }
+                catch {
+                }
 
             }
         }

@@ -9,9 +9,9 @@ using System.Data.SqlClient;
 namespace WindowsFormsApp1
 {
 
-    internal class productList
+    internal class productsList
     {
-        string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\OneDrive\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\Database1.mdf;Integrated Security=True";
+        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
 
         public int ID { set; get; }
 
@@ -32,11 +32,42 @@ namespace WindowsFormsApp1
         public string DateInsert { set; get; }
 
         public string DateUpdate { set; get; }
+        
+        public List<productsList> productListData()
+        {
+            List<productsList> listData = new List<productsList>();
+
+            using (SqlConnection connect = new SqlConnection(connection)) 
+            {
+                connect.Open();
+
+                string selectData = "SELECT * FROM products";
+
+                using(SqlCommand cmd = new SqlCommand(selectData, connect))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+
+                    while (reader.Read())
+                    {
+                        productsList pList = new productsList();
+
+                        pList.ID = (int)reader["ID"];
+                        pList.productName = reader[""];
+                    }    
+                }
+
+                
+            }
+            return listData;
+
+        }
+
 
 
     }
+   
 
-    public class productsList
-    {
-    }
+   
 }
