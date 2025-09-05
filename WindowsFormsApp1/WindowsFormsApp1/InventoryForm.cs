@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         public InventoryForm()
         {
             InitializeComponent();
+            displayCategories();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace WindowsFormsApp1
                         {
                             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                            string insertData = "INSERT INTO products (productid, productname, category, stock, price, status, image,date_import) " +
+                            string insertData = "INSERT INTO products (productid, productname, category, stock, price, status, image,date_insert) " +
                                 "VALUES(@productid, @productname, @category, @stock, @price, @status,  @image, @date)";
 
                             string relativepath = Path.Combine("products_directory", inventory_productID.Text.Trim() + "jpg");
@@ -104,7 +105,7 @@ namespace WindowsFormsApp1
                                 cmd.Parameters.AddWithValue("@category", inventory_category.SelectedItem.ToString());
                                 cmd.Parameters.AddWithValue("@stock", inventory_stock.Text.Trim());
                                 cmd.Parameters.AddWithValue("@price", inventory_price.Text.Trim());
-                                cmd.Parameters.AddWithValue("@status", inventory_status.Text.Trim());
+                                cmd.Parameters.AddWithValue("@status", inventory_status.SelectedItem.ToString());
                                 cmd.Parameters.AddWithValue("@image", path);
                                 
 
@@ -129,6 +130,25 @@ namespace WindowsFormsApp1
 
         public void displayCategories()
         {
+            inventory_category.Items.Clear();
+
+            using (SqlConnection connect = new SqlConnection(connection))
+            {
+                connect.Open();
+
+                string selectcat = "SELECT * FROM categories WHERE status = 'Available'";
+                using (SqlCommand cmd = new SqlCommand(selectcat, connect))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string category = reader["category"].ToString();
+                        inventory_category.Items.Add(category);
+                    }
+                }
+
+            }
 
         }
 
@@ -182,7 +202,7 @@ namespace WindowsFormsApp1
         {
             if(e.RowIndex != -1)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
                 getID = (int)row.Cells[0].Value;
                 inventory_productID.Text = row.Cells[1].Value.ToString();

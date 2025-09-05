@@ -30,13 +30,13 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.inventory_clear = new System.Windows.Forms.Button();
             this.inventory_delete = new System.Windows.Forms.Button();
             this.inventory_update = new System.Windows.Forms.Button();
             this.inventory_add = new System.Windows.Forms.Button();
-            this.inventory_import = new System.Windows.Forms.Button();
+            this.inventory_importBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             this.inventory_productID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +61,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dataGridView2);
             this.panel1.Location = new System.Drawing.Point(20, 15);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(981, 427);
@@ -78,15 +78,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "All Products";
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 41);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(937, 354);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(14, 41);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(937, 354);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panel2
             // 
@@ -94,7 +94,7 @@
             this.panel2.Controls.Add(this.inventory_delete);
             this.panel2.Controls.Add(this.inventory_update);
             this.panel2.Controls.Add(this.inventory_add);
-            this.panel2.Controls.Add(this.inventory_import);
+            this.panel2.Controls.Add(this.inventory_importBtn);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.inventory_status);
@@ -175,21 +175,21 @@
             this.inventory_add.UseVisualStyleBackColor = false;
             this.inventory_add.Click += new System.EventHandler(this.inventory_add_Click);
             // 
-            // inventory_import
+            // inventory_importBtn
             // 
-            this.inventory_import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.inventory_import.FlatAppearance.BorderSize = 0;
-            this.inventory_import.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(76)))), ((int)(((byte)(65)))));
-            this.inventory_import.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(76)))), ((int)(((byte)(65)))));
-            this.inventory_import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory_import.ForeColor = System.Drawing.Color.White;
-            this.inventory_import.Location = new System.Drawing.Point(815, 174);
-            this.inventory_import.Name = "inventory_import";
-            this.inventory_import.Size = new System.Drawing.Size(118, 27);
-            this.inventory_import.TabIndex = 13;
-            this.inventory_import.Text = "IMPORT";
-            this.inventory_import.UseVisualStyleBackColor = false;
-            this.inventory_import.Click += new System.EventHandler(this.inventory_import_Click);
+            this.inventory_importBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.inventory_importBtn.FlatAppearance.BorderSize = 0;
+            this.inventory_importBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(76)))), ((int)(((byte)(65)))));
+            this.inventory_importBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(76)))), ((int)(((byte)(65)))));
+            this.inventory_importBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory_importBtn.ForeColor = System.Drawing.Color.White;
+            this.inventory_importBtn.Location = new System.Drawing.Point(815, 174);
+            this.inventory_importBtn.Name = "inventory_importBtn";
+            this.inventory_importBtn.Size = new System.Drawing.Size(118, 27);
+            this.inventory_importBtn.TabIndex = 13;
+            this.inventory_importBtn.Text = "IMPORT";
+            this.inventory_importBtn.UseVisualStyleBackColor = false;
+            this.inventory_importBtn.Click += new System.EventHandler(this.inventory_import_Click);
             // 
             // panel3
             // 
@@ -316,7 +316,7 @@
             // inventory_productID
             // 
             this.inventory_productID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventory_productID.Location = new System.Drawing.Point(133, 31);
+            this.inventory_productID.Location = new System.Drawing.Point(133, 36);
             this.inventory_productID.Name = "inventory_productID";
             this.inventory_productID.Size = new System.Drawing.Size(189, 24);
             this.inventory_productID.TabIndex = 1;
@@ -344,7 +344,7 @@
             this.Load += new System.EventHandler(this.InventoryForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -357,7 +357,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox inventory_productID;
@@ -371,7 +371,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox inventory_stock;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button inventory_import;
+        private System.Windows.Forms.Button inventory_importBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button inventory_clear;
