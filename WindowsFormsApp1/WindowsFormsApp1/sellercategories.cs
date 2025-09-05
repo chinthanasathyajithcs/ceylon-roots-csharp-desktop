@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class sellercategories : UserControl
     {
-        string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\OneDrive\Desktop\project\WindowsFormsApp1\WindowsFormsApp1\Database1.mdf;Integrated Security=True";
+        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
         public sellercategories()
         {
             InitializeComponent();
