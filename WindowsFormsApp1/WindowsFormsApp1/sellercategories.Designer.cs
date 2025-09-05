@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.categories_status = new System.Windows.Forms.ComboBox();
             this.categories_deleteBtn = new System.Windows.Forms.Button();
             this.categories_clearBtn = new System.Windows.Forms.Button();
             this.categories_updateBtn = new System.Windows.Forms.Button();
@@ -39,7 +41,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.categories_status = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -60,6 +61,19 @@
             this.panel1.Size = new System.Drawing.Size(307, 723);
             this.panel1.TabIndex = 0;
             // 
+            // categories_status
+            // 
+            this.categories_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_status.FormattingEnabled = true;
+            this.categories_status.Items.AddRange(new object[] {
+            "Available",
+            "Unavailable"});
+            this.categories_status.Location = new System.Drawing.Point(20, 120);
+            this.categories_status.Name = "categories_status";
+            this.categories_status.Size = new System.Drawing.Size(262, 26);
+            this.categories_status.TabIndex = 11;
+            this.categories_status.SelectedIndexChanged += new System.EventHandler(this.inventory_status_SelectedIndexChanged);
+            // 
             // categories_deleteBtn
             // 
             this.categories_deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
@@ -73,6 +87,7 @@
             this.categories_deleteBtn.TabIndex = 9;
             this.categories_deleteBtn.Text = "Delete";
             this.categories_deleteBtn.UseVisualStyleBackColor = false;
+            this.categories_deleteBtn.Click += new System.EventHandler(this.categories_deleteBtn_Click);
             // 
             // categories_clearBtn
             // 
@@ -102,6 +117,7 @@
             this.categories_updateBtn.TabIndex = 7;
             this.categories_updateBtn.Text = "Update";
             this.categories_updateBtn.UseVisualStyleBackColor = false;
+            this.categories_updateBtn.Click += new System.EventHandler(this.categories_updateBtn_Click);
             // 
             // categories_addBtn
             // 
@@ -159,11 +175,22 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(16, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(616, 672);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -175,19 +202,6 @@
             this.label1.Size = new System.Drawing.Size(106, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "All Categories";
-            // 
-            // categories_status
-            // 
-            this.categories_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categories_status.FormattingEnabled = true;
-            this.categories_status.Items.AddRange(new object[] {
-            "Available",
-            "Unavailable"});
-            this.categories_status.Location = new System.Drawing.Point(20, 120);
-            this.categories_status.Name = "categories_status";
-            this.categories_status.Size = new System.Drawing.Size(262, 26);
-            this.categories_status.TabIndex = 11;
-            this.categories_status.SelectedIndexChanged += new System.EventHandler(this.inventory_status_SelectedIndexChanged);
             // 
             // sellercategories
             // 

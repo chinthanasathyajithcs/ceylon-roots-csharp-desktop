@@ -17,14 +17,15 @@ namespace WindowsFormsApp1
         public sellercategories()
         {
             InitializeComponent();
+            displayCategories();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(categories_category.Text == "" || categories_status.SelectedIndex == -1)
+            if (categories_category.Text == "" || categories_status.SelectedIndex == -1)
             {
                 MessageBox.Show("Empty fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
             else
             {
@@ -62,25 +63,136 @@ namespace WindowsFormsApp1
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Added Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                clearfields();
                             }
                         }
                     }
                 }
 
-            }    
+            }
+            displayCategories();
 
         }
 
-        private void categories_clearBtn_Click(object sender, EventArgs e)
+
+        void clearfields()
         {
             categories_category.Clear();
             categories_status.SelectedIndex = -1;
 
         }
 
+        private void categories_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearfields();
+        }
+
+        public void displayCategories()
+        {
+            categoriesList cData = new categoriesList();
+            List<categoriesList> list = cData.categoriesListData();
+
+            dataGridView1.DataSource = list;
+        }
+
         private void inventory_status_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private int getID = 0;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = Convert.ToInt32(row.Cells[0].Value);
+                categories_category.Text = row.Cells[1].Value?.ToString();
+                categories_status.Text = row.Cells[2].Value?.ToString();
+            }
+        }
+
+        private void categories_updateBtn_Click(object sender, EventArgs e)
+        {
+            if (getID == 0)
+            {
+                MessageBox.Show("Select item first", "Error Messsage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                if (MessageBox.Show($"Are you sure you want to update this ID: {getID}", "Comfirmation Message",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection connect = new SqlConnection(connection))
+                    {
+                        connect.Open();
+
+                        string updateData = "UPDATE categories SET category = @cat, status = @status WHERE ID = @id";
+
+                        using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@cat", categories_category.Text.Trim());
+                            cmd.Parameters.AddWithValue("@status", categories_status.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@id", getID);
+
+                            cmd.ExecuteNonQuery();
+                            clearfields();
+                            displayCategories();
+
+                            MessageBox.Show("Updated Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            displayCategories();
+        }
+
+        private void categories_deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (getID == 0)
+            {
+                MessageBox.Show("Select item first", "Error Messsage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                if (MessageBox.Show($"Are you sure you want to delete this ID: {getID}", "Comfirmation Message",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection connect = new SqlConnection(connection))
+                    {
+                        connect.Open();
+
+                        string updateData = "DELETE FROM categories WHERE id = @id";
+
+                        using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@cat", categories_category.Text.Trim());
+                            cmd.Parameters.AddWithValue("@status", categories_status.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@id", getID);
+
+                            cmd.ExecuteNonQuery();
+                            clearfields();
+                            displayCategories();
+
+                            MessageBox.Show("Updated Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            displayCategories();
         }
     }
 }
