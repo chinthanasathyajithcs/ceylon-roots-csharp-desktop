@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class InventoryForm : UserControl
     {
-        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=********;Connect Timeout=30;Encrypt=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
         public InventoryForm()
         {
             InitializeComponent();
