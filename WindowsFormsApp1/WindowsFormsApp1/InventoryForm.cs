@@ -22,6 +22,20 @@ namespace WindowsFormsApp1
             displayCategories();
         }
 
+        private void displayproducts()
+        {
+           
+            productsList pList = new productsList();
+
+            List<productsList> listData = new productsList().productListData();
+            dataGridView2.DataSource = listData;
+
+
+
+
+        }
+
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -61,7 +75,7 @@ namespace WindowsFormsApp1
 
             else
             {
-                using (SqlConnection connect = new SqlConnection(connection)) 
+                using (SqlConnection connect = new SqlConnection(connection))
                 {
                     connect.Open();
 
@@ -79,7 +93,7 @@ namespace WindowsFormsApp1
                         {
                             MessageBox.Show($"{inventory_productID.Text.Trim()} is existing already", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else 
+                        else
                         {
                             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -107,7 +121,7 @@ namespace WindowsFormsApp1
                                 cmd.Parameters.AddWithValue("@price", inventory_price.Text.Trim());
                                 cmd.Parameters.AddWithValue("@status", inventory_status.SelectedItem.ToString());
                                 cmd.Parameters.AddWithValue("@image", path);
-                                
+
 
                                 DateTime today = DateTime.Now;
                                 cmd.Parameters.AddWithValue("@date", today);
@@ -116,16 +130,14 @@ namespace WindowsFormsApp1
 
                                 MessageBox.Show("Added successfully", "information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 clearFields();
-
-
-
+                                displayproducts();
                             }
                         }
                     }
                 }
-                    }
+                displayCategories();
+            }
 
-                        
         }
 
         public void displayCategories()
@@ -189,7 +201,7 @@ namespace WindowsFormsApp1
         
         private void InventoryForm_Load(object sender, EventArgs e)
         {
-
+            displayproducts();
         }
 
         private void inventory_clear_Click(object sender, EventArgs e)
@@ -217,9 +229,20 @@ namespace WindowsFormsApp1
 
                 try
                 {
+                    if (imagePath != null)
+                    {
+                        pictureBox1.Image = Image.FromFile(imagePath);
+                    }
+                    else
+                    {
+                        pictureBox1.Image = null;
+                    }
 
                 }
-                catch {
+                catch(Exception ex) 
+                {
+                    MessageBox.Show($"Error:{ex}", "error_Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
 
             }
@@ -228,6 +251,100 @@ namespace WindowsFormsApp1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void inventory_update_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"Are you sure you want to update ID {getID}?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (getID == 0)
+                {
+                    MessageBox.Show("Empty fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    using (SqlConnection connect = new SqlConnection(connection))
+                    {
+                        connect.Open();
+
+                        string checkProductId = "SELECT * FROM products WHERE productid = @prodid";
+
+                        using (SqlCommand checkProd = new SqlCommand(checkProductId, connect))
+                        {
+                            checkProd.Parameters.AddWithValue("@prodid", inventory_productID.Text.Trim());
+
+                            SqlDataAdapter adapter = new SqlDataAdapter(checkProd);
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count >= 2)
+                            {
+                                MessageBox.Show(inventory_productID.Text.Trim() + " was existing already", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                string updateData = "UPDATE products SET productid = @prodid, productname = @prodname, category = @cat, " +
+                                    "stock = @stock, price = @price, status = @status, date_update = @date WHERE id = @id";
+
+                                using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                                {
+                                    cmd.Parameters.AddWithValue("@prodid", inventory_productID.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@prodname", inventory_productName.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@cat", inventory_category.SelectedItem.ToString());
+                                    cmd.Parameters.AddWithValue("@stock", inventory_stock.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@price", inventory_price.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@status", inventory_status.SelectedItem.ToString());
+
+                                    DateTime today = DateTime.Now;
+                                    cmd.Parameters.AddWithValue("@date", today);
+                                    cmd.Parameters.AddWithValue("@id", getID);
+
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Updated successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+            }
+            displayproducts();
+
+        }
+
+        private void inventory_delete_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show($"Are you sure you want to delete ID {getID}?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (getID == 0)
+                {
+                    MessageBox.Show("Empty fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    using (SqlConnection connect = new SqlConnection(connection))
+                    {
+                        connect.Open();
+
+                        string updateData = "DELETE FROM products WHERE id = @id";
+
+                        using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@id", getID);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Deleted successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            clearFields();
+                        }
+                    }
+                }
+                displayproducts();
+            }
         }
     }
 }

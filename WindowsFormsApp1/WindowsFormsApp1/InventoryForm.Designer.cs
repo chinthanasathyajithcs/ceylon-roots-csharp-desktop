@@ -143,6 +143,7 @@
             this.inventory_delete.TabIndex = 16;
             this.inventory_delete.Text = "DELETE";
             this.inventory_delete.UseVisualStyleBackColor = false;
+            this.inventory_delete.Click += new System.EventHandler(this.inventory_delete_Click);
             // 
             // inventory_update
             // 
@@ -158,6 +159,7 @@
             this.inventory_update.TabIndex = 15;
             this.inventory_update.Text = "UPDATE";
             this.inventory_update.UseVisualStyleBackColor = false;
+            this.inventory_update.Click += new System.EventHandler(this.inventory_update_Click);
             // 
             // inventory_add
             // 
