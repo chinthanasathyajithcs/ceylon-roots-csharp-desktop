@@ -43,22 +43,30 @@ namespace WindowsFormsApp1
                 var selectedCard = (cardProduct)q;
                 bool flag = false;
 
+                int availableStock = 0;
+                int.TryParse(selectedCard.productStock, out availableStock);
+
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (row.Cells["id"].Value != null && (int)row.Cells["id"].Value == selectedCard.id)
                     {
-                        decimal getprice = Convert.ToDecimal(selectedCard.productPrice.Replace("$",""));
-                        int getQuantity = Convert.ToInt32(selectedCard.productQuantity);
-
-
-
                         int currentQty = 0;
                         int.TryParse(row.Cells["QTY"].Value?.ToString(), out currentQty);
+
                         int addQty = 1;
                         int.TryParse(selectedCard.productQuantity, out addQty);
 
-                        row.Cells["Price"].Value = getprice * (currentQty + addQty);
-                        row.Cells["QTY"].Value = selectedCard.productQuantity;
+                        int newQty = currentQty + addQty;
+
+                        if (newQty > availableStock)
+                        {
+                            MessageBox.Show($"Cannot add more than available stock ({availableStock}).", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        decimal getprice = Convert.ToDecimal(selectedCard.productPrice.Replace("$", ""));
+                        row.Cells["Price"].Value = getprice * newQty;
+                        row.Cells["QTY"].Value = newQty;
                         row.Cells["prodName"].Value = selectedCard.productName;
                         flag = true;
                         break;
@@ -66,13 +74,16 @@ namespace WindowsFormsApp1
                 }
                 if (!flag)
                 {
+                    int getQuantity = 1;
+                    int.TryParse(selectedCard.productQuantity, out getQuantity);
+                    if (getQuantity > availableStock)
+                    {
+                        MessageBox.Show($"Cannot add more than available stock ({availableStock}).", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
                     decimal getprice = Convert.ToDecimal(selectedCard.productPrice.Replace("$", ""));
-                    int getQuantity = Convert.ToInt32(selectedCard.productQuantity);
-
-                    int qty = 1;
-                    int.TryParse(selectedCard.productQuantity, out qty);
-                    dataGridView1.Rows.Add(selectedCard.id, selectedCard.productName, getQuantity,getprice  * getQuantity);
+                    dataGridView1.Rows.Add(selectedCard.id, selectedCard.productName, getQuantity, getprice * getQuantity);
                 }
                 updateTotalprice();
             };
@@ -306,7 +317,7 @@ namespace WindowsFormsApp1
             alignCenter.Alignment = StringAlignment.Center;
             alignCenter.LineAlignment = StringAlignment.Center;
 
-            string headerText = "MarcoMan's Restaurant";
+            string headerText = "";
             y = (margin + count * headerFont.GetHeight(e.Graphics) + headerMargin);
             e.Graphics.DrawString(headerText, headerFont, Brushes.Black, e.MarginBounds.Left + (dataGridView1.Columns.Count / 2) * colWidth, y, alignCenter);
 
