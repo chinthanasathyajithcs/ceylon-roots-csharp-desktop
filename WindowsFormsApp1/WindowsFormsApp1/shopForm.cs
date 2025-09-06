@@ -46,12 +46,18 @@ namespace WindowsFormsApp1
                 {
                     if (row.Cells["id"].Value != null && (int)row.Cells["id"].Value == selectedCard.id)
                     {
-                        
+                        decimal getprice = Convert.ToDecimal(selectedCard.productPrice.Replace("$",""));
+                        int getQuantity = Convert.ToInt32(selectedCard.productQuantity);
+
+
+
                         int currentQty = 0;
                         int.TryParse(row.Cells["QTY"].Value?.ToString(), out currentQty);
                         int addQty = 1;
                         int.TryParse(selectedCard.productQuantity, out addQty);
-                        row.Cells["QTY"].Value = currentQty + addQty;
+
+                        row.Cells["Price"].Value = getprice * (currentQty + addQty);
+                        row.Cells["QTY"].Value = selectedCard.productQuantity;
                         row.Cells["prodName"].Value = selectedCard.productName;
                         flag = true;
                         break;
@@ -59,10 +65,15 @@ namespace WindowsFormsApp1
                 }
                 if (!flag)
                 {
+
+                    decimal getprice = Convert.ToDecimal(selectedCard.productPrice.Replace("$", ""));
+                    int getQuantity = Convert.ToInt32(selectedCard.productQuantity);
+
                     int qty = 1;
                     int.TryParse(selectedCard.productQuantity, out qty);
-                    dataGridView1.Rows.Add(selectedCard.id, selectedCard.productName, qty);
+                    dataGridView1.Rows.Add(selectedCard.id, selectedCard.productName, getQuantity,getprice  * getQuantity);
                 }
+                updateTotalprice();
             };
         }
 
@@ -123,6 +134,143 @@ namespace WindowsFormsApp1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        bool check = false;
+        private void shop_placeOrderBtn_Click(object sender, EventArgs e)
+        {
+            if (!check)
+            {
+                MessageBox.Show("Invalid: Insufficient Amount", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to proceed?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection connect = new SqlConnection(connection))
+                    {
+                        connect.Open();
+
+                        string countData = "SELECT COUNT(*) FROM orders";
+                        int count = 1;
+
+                        using (SqlCommand cData = new SqlCommand(countData, connect))
+                        {
+                            count = Convert.ToInt32(cData.ExecuteScalar()) + 1;
+                        }
+
+                        List<string> productIds = new List<string>();
+                        List<string> quantities = new List<string>();
+                        List<string> prices = new List<string>();
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            if (row.Cells["id"].Value != null && row.Cells["QTY"].Value != null && row.Cells["Price"].Value != null)
+                            {
+                                productIds.Add(row.Cells["id"].Value.ToString());
+                                quantities.Add(row.Cells["QTY"].Value.ToString());
+                                prices.Add(row.Cells["Price"].Value.ToString());
+                            }
+                        }
+
+                        string productIdsStr = string.Join(",", productIds);
+                        string quantitiesStr = string.Join(",", quantities);
+                        string pricesStr = string.Join(",", prices);
+
+                        decimal totalAmount = Convert.ToDecimal(shop_total.Text.Replace("$", ""));
+
+                        string insertData = "INSERT INTO orders (customerId, productids, quantities, prices, total, date_order) VALUES(@cid, @pid, @qty, @price, @total, @date)";
+                        using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@cid", $"CID-{count}");
+                            cmd.Parameters.AddWithValue("@pid", productIdsStr);
+                            cmd.Parameters.AddWithValue("@qty", quantitiesStr);
+                            cmd.Parameters.AddWithValue("@price", pricesStr);
+                            cmd.Parameters.AddWithValue("@total", totalAmount);
+
+                            DateTime today = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@date", today);
+
+                            int rowAffected = cmd.ExecuteNonQuery();
+
+                            if (rowAffected > 0)
+                            {
+                                for (int q = 0; q < productIds.Count; q++)
+                                {
+                                    string updateData = "UPDATE products SET stock = stock - @qty WHERE id = @id";
+                                    using (SqlCommand updateCmd = new SqlCommand(updateData, connect))
+                                    {
+                                        updateCmd.Parameters.AddWithValue("@qty", quantities[q]);
+                                        updateCmd.Parameters.AddWithValue("@id", productIds[q]);
+                                        updateCmd.ExecuteNonQuery();
+                                    }
+                                }
+                                MessageBox.Show("Order placed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Order placement failed!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void shop_receiptBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateTotalprice()
+        {
+            decimal totalprice = 0;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow && row.Cells["id"].Value != null && row.Cells["Price"].Value != null)
+                {
+                    decimal price = 0;
+                    decimal.TryParse(row.Cells["Price"].Value.ToString(), out price);
+                    totalprice += price;
+                }
+            }
+
+            shop_total.Text = $"{totalprice:F2}";
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    decimal getTotal = Convert.ToDecimal(shop_total.Text.ToString().Replace("$", ""));
+                    decimal getChange = Convert.ToDecimal(textBox1.Text);
+
+                    if (getTotal > getChange)
+                    {
+                        check = false;
+                        MessageBox.Show("Invalid: Insufficient Amount", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        check = true;
+                        shop_amount.Text = $"${getChange - getTotal:0.00}";
+                        e.SuppressKeyPress = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    check = false;
+                    MessageBox.Show($"Error: {ex}", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
