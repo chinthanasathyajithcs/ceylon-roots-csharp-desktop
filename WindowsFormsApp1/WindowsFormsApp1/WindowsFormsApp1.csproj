@@ -77,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cardProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cardProduct.Designer.cs">
+      <DependentUpon>cardProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="categoriesList.cs" />
     <Compile Include="sellercategories.cs">
       <SubType>UserControl</SubType>
@@ -183,6 +189,9 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="cardProduct.resx">
+      <DependentUpon>cardProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="sellercategories.resx">
       <DependentUpon>sellercategories.cs</DependentUpon>
     </EmbeddedResource>

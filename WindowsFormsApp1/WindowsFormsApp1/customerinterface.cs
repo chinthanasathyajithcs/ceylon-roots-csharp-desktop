@@ -41,5 +41,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void shopForm1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
