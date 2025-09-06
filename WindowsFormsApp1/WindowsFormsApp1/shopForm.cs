@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace WindowsFormsApp1
 {
@@ -217,8 +218,15 @@ namespace WindowsFormsApp1
             }
         }
 
+        private int rowIndex = 0;
         private void shop_receiptBtn_Click(object sender, EventArgs e)
         {
+            printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
+            printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(printDocument1_BeginPrint);
+
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+
 
         }
 
@@ -228,7 +236,7 @@ namespace WindowsFormsApp1
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (!row.IsNewRow && row.Cells["id"].Value != null && row.Cells["Price"].Value != null)
+                if (!row.IsNewRow && row.Cells["id"].Value != null && row.Cells["Price"].Value != null) 
                 {
                     decimal price = 0;
                     decimal.TryParse(row.Cells["Price"].Value.ToString(), out price);
@@ -272,5 +280,88 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float y = 0;
+            int count = 0;
+            int colWidth = 120;
+            int headerMargin = 80;
+            int tableMargin = 20;
+            int rowIndex = 0;
+
+            Font font = new Font("Arial", 12);
+            Font bold = new Font("Arial", 12, FontStyle.Bold);
+            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
+            Font labelFont = new Font("Arial", 14, FontStyle.Bold);
+
+            float margin = e.MarginBounds.Top;
+
+            StringFormat alignCenter = new StringFormat();
+            alignCenter.Alignment = StringAlignment.Center;
+            alignCenter.LineAlignment = StringAlignment.Center;
+
+            string headerText = "MarcoMan's Restaurant";
+            y = (margin + count * headerFont.GetHeight(e.Graphics) + headerMargin);
+            e.Graphics.DrawString(headerText, headerFont, Brushes.Black, e.MarginBounds.Left + (dataGridView1.Columns.Count / 2) * colWidth, y, alignCenter);
+
+            count++;
+            y += tableMargin;
+
+            string[] header = { "ProdName", "Category", "Qty", "Price" };
+            for (int q = 0; q < header.Length; q++)
+            {
+                y = margin + count * bold.GetHeight(e.Graphics) + tableMargin;
+                e.Graphics.DrawString(header[q], bold, Brushes.Black, e.MarginBounds.Left + q * colWidth, y, alignCenter);
+            }
+
+            count++;
+            y += tableMargin;
+
+            count++;
+            float rSpace = e.MarginBounds.Bottom - y;
+            while (rowIndex < dataGridView1.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView1.Rows[rowIndex];
+
+                for (int q = 0; q < dataGridView1.Columns.Count; q++)
+                {
+                    object cellValue = row.Cells[q].Value;
+                    string cell = (cellValue == null) ? string.Empty : cellValue.ToString();
+
+                    y = margin + count * font.GetHeight(e.Graphics) + tableMargin;
+                    e.Graphics.DrawString(cell, font, Brushes.Black, e.MarginBounds.Left + q * colWidth, y, alignCenter);
+                }
+                count++;
+                rowIndex++;
+
+                if (y + font.GetHeight(e.Graphics) > e.MarginBounds.Bottom)
+                {
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+
+            int labelMargin = (int)Math.Min(rSpace, -40);
+            DateTime today = DateTime.Now;
+            float labelX = e.MarginBounds.Right - e.Graphics.MeasureString("-----------------------", labelFont).Width;
+
+            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
+            e.Graphics.DrawString($"Total Price: \t{shop_total.Text.Trim()}\nAmount:\t{textBox1.Text.Trim()}\n\t----------\nChange:\t{shop_amount.Text.Trim()}", labelFont, Brushes.Black, labelX, y);
+
+            labelMargin = (int)Math.Min(rSpace, -40);
+
+            string labelText = today.ToString();
+
+            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
+            e.Graphics.DrawString(labelText, labelFont, Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("-----------------------", labelFont).Width, y);
+        }
     }
-}
+    }
+
+
