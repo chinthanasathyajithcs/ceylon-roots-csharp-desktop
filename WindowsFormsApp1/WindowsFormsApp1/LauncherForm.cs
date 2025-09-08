@@ -66,5 +66,10 @@ namespace WindowsFormsApp1
         {
             new customerinterface().Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            new paint_interface().Show();
+        }
     }
 }
