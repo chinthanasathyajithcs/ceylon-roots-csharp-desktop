@@ -20,10 +20,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Language_change_form langForm = new Language_change_form(); // <-- use your form class
-            langForm.Show();
-            this.Hide();
-
+            
         }
     }
 }

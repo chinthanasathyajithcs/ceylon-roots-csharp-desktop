@@ -157,12 +157,6 @@
     <Compile Include="History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Language change form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Language change form.Designer.cs">
-      <DependentUpon>Language change form.cs</DependentUpon>
-    </Compile>
     <Compile Include="paint interface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,9 +215,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm.resx">
       <DependentUpon>InventoryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Language change form.resx">
-      <DependentUpon>Language change form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LauncherForm.resx">
       <DependentUpon>LauncherForm.cs</DependentUpon>
