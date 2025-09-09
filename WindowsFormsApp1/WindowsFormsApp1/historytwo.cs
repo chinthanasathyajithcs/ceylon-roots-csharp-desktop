@@ -40,5 +40,10 @@ namespace WindowsFormsApp1
             HistoryFormthree.Show();
             this.Hide();
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
