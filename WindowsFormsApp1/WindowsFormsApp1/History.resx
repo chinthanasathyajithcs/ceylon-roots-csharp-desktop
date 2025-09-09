@@ -117,16 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox4.Text" xml:space="preserve">
+  <data name="label4.Text" xml:space="preserve">
     <value>Sri Lankan weavers have skillfully transformed traditional patterns and color schemes into timeless designs that reflect the creativity and ingenuity of the nation. Beyond its historical significance, the handloom industry has served as a platform to showcase Sri Lankan artistry on the global stage, gaining recognition for its vibrant and sustainable textiles.
-This industry is not only a cultural treasure but also an economic cornerstone, providing livelihoods to countless rural households. By blending traditional craftsmanship with modern design trends and advanced processing techniques, Sri Lankan handloom products have adapted to the changing demands of the international market, ensuring their continued relevance and appeal.
 
-</value>
+This industry is not only a cultural treasure but also an economic cornerstone, providing livelihoods to countless rural households. By blending traditional craftsmanship with modern design trends and advanced processing techniques, Sri Lankan handloom products have adapted to the changing demands of the international market, ensuring their continued relevance and appeal </value>
   </data>
-  <data name="textBox2.Text" xml:space="preserve">
+  <data name="label2.Text" xml:space="preserve">
     <value>The handloom textile industry in Sri Lanka is a testament to the nation’s rich cultural heritage. With origins tracing back over 2,500 years, the art of handloom weaving has been meticulously preserved and passed down through generations. Early chronicles from the Anuradhapura Kingdom (377 BC – 1017 AD) reveal that hand-woven fabrics were created for royal households, temple rituals, and Buddhist monks, highlighting the craft’s cultural and spiritual significance.
-As centuries passed, weaving evolved into an expression of identity and artistry. The Kandyan era (15th – 19th century) marked a golden age for handloom textiles, with vibrant colors, intricate motifs, and unique patterns adorning the attire of the royal court. The iconic Kandyan saree (osariya) emerged during this time, embodying elegance, tradition, and national pride. Later, under colonial influence, Sri Lankan weavers adapted to changing tastes, incorporating new dyes and techniques while never losing their indigenous essence.
 
-</value>
+As centuries passed, weaving evolved into an expression of identity and artistry. The Kandyan era (15th – 19th century) marked a golden age for handloom textiles, with vibrant colors, intricate motifs, and unique patterns adorning the attire of the royal court. The iconic Kandyan saree (osariya) emerged during this time, embodying elegance, tradition, and national pride. Later, under colonial influence, Sri Lankan weavers adapted to changing tastes, incorporating new dyes and techniques while never losing their indigenous essence.</value>
   </data>
 </root>
