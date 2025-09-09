@@ -84,12 +84,6 @@
       <DependentUpon>cardProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="categoriesList.cs" />
-    <Compile Include="customer information.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="customer information.Designer.cs">
-      <DependentUpon>customer information.cs</DependentUpon>
-    </Compile>
     <Compile Include="language change.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,9 +197,6 @@
     </Compile>
     <EmbeddedResource Include="cardProduct.resx">
       <DependentUpon>cardProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="customer information.resx">
-      <DependentUpon>customer information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.de.resx">
       <DependentUpon>History.cs</DependentUpon>

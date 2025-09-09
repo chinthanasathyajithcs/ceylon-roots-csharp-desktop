@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+            new sellerform().Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            new customer_information().Show();
+            
         }
     }
 }
