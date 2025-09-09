@@ -204,6 +204,9 @@
     <EmbeddedResource Include="History.de.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historythree.de.resx">
+      <DependentUpon>Historythree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="historytwo.de.resx">
       <DependentUpon>historytwo.cs</DependentUpon>
     </EmbeddedResource>
