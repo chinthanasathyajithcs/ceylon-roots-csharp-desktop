@@ -19,7 +19,10 @@ namespace WindowsFormsApp1
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            userControl12.Visible = false;
+            inventoryForm1.Visible = true;
+            sellercategories1.Visible = false;
+            orders1.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -64,6 +67,11 @@ namespace WindowsFormsApp1
             sellercategories1.Visible = false;
             orders1.Visible = true;
 
+
+        }
+
+        private void orders1_Load(object sender, EventArgs e)
+        {
 
         }
     }

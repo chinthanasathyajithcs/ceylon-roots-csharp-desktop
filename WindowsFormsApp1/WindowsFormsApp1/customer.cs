@@ -25,18 +25,19 @@ namespace WindowsFormsApp1
         string landmark;
         string roomNumber;
         DateTime deliveryDate;
-
+        string imagePath; // Add this line
 
         public customer()
         {
             InitializeComponent();
+            // Set default delivery date since DateTimePicker is removed
+            deliveryDate = DateTime.Now;
         }
 
         private void customer_Load(object sender, EventArgs e)
         {
-
-            dateTimePicker1.Value = DateTime.Now;
-
+            // DateTimePicker removed, so nothing to do here
+            // deliveryDate is already set in the constructor
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -68,7 +69,8 @@ namespace WindowsFormsApp1
             textBox7.Clear();
             textBox8.Clear();
             textBox9.Clear();
-            dateTimePicker1.Value = DateTime.Now;
+            // DateTimePicker removed, so set deliveryDate to now
+            deliveryDate = DateTime.Now;
 
         }
 
@@ -96,14 +98,6 @@ namespace WindowsFormsApp1
         {
             //hotel number
             hotelNumber = textBox5.Text;
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            //date
-
-            deliveryDate = dateTimePicker1.Value;
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -153,10 +147,53 @@ namespace WindowsFormsApp1
             landmark = textBox7.Text;
         }
 
+        private void ValidateFields()
+        {
+            // Check text fields
+            if (string.IsNullOrWhiteSpace(textBox1.Text) ||
+                string.IsNullOrWhiteSpace(textBox2.Text) ||
+                string.IsNullOrWhiteSpace(textBox3.Text) ||
+                string.IsNullOrWhiteSpace(textBox4.Text) ||
+                string.IsNullOrWhiteSpace(textBox5.Text) ||
+                string.IsNullOrWhiteSpace(textBox6.Text) ||
+                string.IsNullOrWhiteSpace(textBox7.Text) ||
+                string.IsNullOrWhiteSpace(textBox8.Text) ||
+                string.IsNullOrWhiteSpace(textBox9.Text))
+            {
+                throw new Exception("All fields must be filled out.");
+            }
+
+            // Check image box
+            if (picture.Image == null)
+            {
+                throw new Exception("An image must be selected.");
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
+        { }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
             try
             {
+                ValidateFields();
+
                 using (SqlConnection conn = new SqlConnection(connection))
                 {
                     conn.Open();
@@ -167,17 +204,17 @@ IF OBJECT_ID(N'dbo.CustomerDelivery', N'U') IS NULL
 BEGIN
     CREATE TABLE [dbo].[CustomerDelivery] (
         ID INT IDENTITY(1,1) PRIMARY KEY,
-        FullName NVARCHAR(100),
-        PassportNIC NVARCHAR(50),
-        Email NVARCHAR(100),
-        Mobile NVARCHAR(20),
-        HotelName NVARCHAR(100),
-        RoomNumber NVARCHAR(20),
-        StreetAddress NVARCHAR(200),
-        City NVARCHAR(50),
-        NearestLandmark NVARCHAR(200),
-        PreferredDeliveryDate DATE,
-        LeaveAtReception BIT
+        FullName VARCHAR(100),
+        PassportNIC VARCHAR(50),
+        Email VARCHAR(100),
+        Mobile VARCHAR(20),
+        HotelName VARCHAR(100),
+        RoomNumber VARCHAR(20),
+        StreetAddress VARCHAR(200),
+        City VARCHAR(50),
+        NearestLandmark VARCHAR(200),
+        LeaveAtReception BIT,
+        image NVARCHAR(300)
     );
 END";
                     using (var cmdEnsure = new SqlCommand(ensureSql, conn))
@@ -186,22 +223,22 @@ END";
                     // Insert form data
                     string query = @"
 INSERT INTO [dbo].[CustomerDelivery]
-(FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, PreferredDeliveryDate, LeaveAtReception)
+(FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, LeaveAtReception, image)
 VALUES
-(@FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @PreferredDeliveryDate, @LeaveAtReception)";
+(@FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @LeaveAtReception, @image)";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", fullName);
-                        cmd.Parameters.AddWithValue("@PassportNIC", passportNumber);
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Mobile", phoneNumber);
-                        cmd.Parameters.AddWithValue("@HotelName", hotelNumber);
-                        cmd.Parameters.AddWithValue("@RoomNumber", roomNumber);
-                        cmd.Parameters.AddWithValue("@StreetAddress", street);
-                        cmd.Parameters.AddWithValue("@City", city);
-                        cmd.Parameters.AddWithValue("@NearestLandmark", landmark);
-                        cmd.Parameters.AddWithValue("@PreferredDeliveryDate", deliveryDate);
+                        cmd.Parameters.AddWithValue("@FullName", textBox1.Text);
+                        cmd.Parameters.AddWithValue("@PassportNIC", textBox3.Text);
+                        cmd.Parameters.AddWithValue("@Email", textBox2.Text);
+                        cmd.Parameters.AddWithValue("@Mobile", textBox4.Text);
+                        cmd.Parameters.AddWithValue("@HotelName", textBox5.Text);
+                        cmd.Parameters.AddWithValue("@RoomNumber", textBox8.Text);
+                        cmd.Parameters.AddWithValue("@StreetAddress", textBox6.Text);
+                        cmd.Parameters.AddWithValue("@City", textBox9.Text);
+                        cmd.Parameters.AddWithValue("@NearestLandmark", textBox7.Text);
                         cmd.Parameters.AddWithValue("@LeaveAtReception", checkBox1.Checked);
+                        cmd.Parameters.AddWithValue("@image", imagePath ?? (object)DBNull.Value);
 
                         int rows = cmd.ExecuteNonQuery();
 
@@ -212,17 +249,48 @@ VALUES
                     }
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Database Error: " + ex.Message, "SQL Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void picImport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Image Files (*.jpg;*.png)|*.jpg;*.png";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    imagePath = dialog.FileName;
+                    picture.ImageLocation = imagePath;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally handle exception
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox6.Clear();
+            textBox7.Clear();
+            textBox8.Clear();
+            textBox9.Clear();
+            // DateTimePicker removed, so set deliveryDate to now
+            deliveryDate = DateTime.Now;
+            picture.Image = null;
+        }
+
+        private void textBox6_TextChanged_1(object sender, EventArgs e)
         {
 
         }

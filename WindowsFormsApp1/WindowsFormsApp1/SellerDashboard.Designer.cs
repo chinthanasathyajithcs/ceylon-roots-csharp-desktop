@@ -154,6 +154,7 @@
             this.orders1.Name = "orders1";
             this.orders1.Size = new System.Drawing.Size(997, 749);
             this.orders1.TabIndex = 7;
+            this.orders1.Load += new System.EventHandler(this.orders1_Load);
             // 
             // sellercategories1
             // 

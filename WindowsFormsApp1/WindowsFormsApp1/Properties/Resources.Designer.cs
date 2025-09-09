@@ -73,6 +73,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5371425 {
+            get {
+                object obj = ResourceManager.GetObject("5371425", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _7c72a9f4bc7d3638ff1d4bae33a2dfb1 {
             get {
                 object obj = ResourceManager.GetObject("7c72a9f4bc7d3638ff1d4bae33a2dfb1", resourceCulture);
@@ -356,6 +366,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap images__9_ {
             get {
                 object obj = ResourceManager.GetObject("images (9)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap In_Transit {
+            get {
+                object obj = ResourceManager.GetObject("In Transit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
