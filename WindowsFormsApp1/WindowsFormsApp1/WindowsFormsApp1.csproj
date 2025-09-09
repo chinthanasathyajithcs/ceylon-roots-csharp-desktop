@@ -201,6 +201,9 @@
     <EmbeddedResource Include="customer information.resx">
       <DependentUpon>customer information.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="History.de.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="language change.de.resx">
       <DependentUpon>language change.cs</DependentUpon>
     </EmbeddedResource>
