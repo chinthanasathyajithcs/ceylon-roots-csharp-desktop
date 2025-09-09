@@ -130,20 +130,29 @@
   <data name="Capture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Capture.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Paint Palette" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Paint Palette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="download (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download (2).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hand Right_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Hand Right_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="WhatsApp Image 2025-08-30 at 11.58.29_0467812b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2025-08-30 at 11.58.29_0467812b.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="images (9)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images (9).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Paint Palette1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Paint Palette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="7c72a9f4bc7d3638ff1d4bae33a2dfb1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7c72a9f4bc7d3638ff1d4bae33a2dfb1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drawing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Drawing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Product" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Product.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,6 +190,9 @@
   <data name="images (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (1).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Fill Color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Fill Color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="images (7)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (7).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -190,8 +202,17 @@
   <data name="User_41" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\User_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hand Right_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Hand Right_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delivery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delivery.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Weavers_of_the_Kandyan_Kings_1_70-1024x683" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Weavers_of_the_Kandyan_Kings_1_70-1024x683.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hand Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Hand Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="images (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (3).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,8 +235,11 @@
   <data name="QR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="User_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\User_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (9)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (9).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Cash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,13 +259,13 @@
   <data name="caption1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\caption1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="User_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\User_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="images (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (4).jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delivery" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delivery.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Hand Right_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Hand Right_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -8,10 +8,7 @@ namespace WindowsFormsApp1
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        /// test
+        
         [STAThread]
         static void Main()
         {

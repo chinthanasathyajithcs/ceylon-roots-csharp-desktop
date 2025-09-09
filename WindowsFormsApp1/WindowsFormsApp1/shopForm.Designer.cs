@@ -47,15 +47,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.sOrder = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.sOrder);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(629, 720);
@@ -63,11 +67,11 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(629, 720);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(629, 587);
             this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel2
             // 
@@ -219,10 +223,36 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // sOrder
+            // 
+            this.sOrder.BackColor = System.Drawing.Color.Tan;
+            this.sOrder.FlatAppearance.BorderSize = 0;
+            this.sOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sOrder.Font = new System.Drawing.Font("Candara", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sOrder.Location = new System.Drawing.Point(123, 585);
+            this.sOrder.Name = "sOrder";
+            this.sOrder.Size = new System.Drawing.Size(506, 135);
+            this.sOrder.TabIndex = 0;
+            this.sOrder.Text = "Order your own design here!!!";
+            this.sOrder.UseVisualStyleBackColor = false;
+            this.sOrder.Click += new System.EventHandler(this.sOrder_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Tan;
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.Hand_Right_3;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 585);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(124, 135);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // shopForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "shopForm";
@@ -231,6 +261,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -255,5 +286,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Button sOrder;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -315,6 +315,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\Cash.png" />
+    <Content Include="assets\Drawing.png" />
+    <Content Include="assets\Fill Color.png" />
+    <Content Include="assets\Hand Right.png" />
+    <Content Include="assets\Hand Right_2.png" />
+    <Content Include="assets\Hand Right_3.png" />
+    <Content Include="assets\Hand Right_4.png" />
+    <Content Include="assets\Hand Right_5.png" />
+    <Content Include="assets\Paint Palette.png" />
     <Content Include="assets\Paper Bag_3.png" />
     <Content Include="assets\Paper Bag_4.png" />
     <Content Include="assets\Product.png" />

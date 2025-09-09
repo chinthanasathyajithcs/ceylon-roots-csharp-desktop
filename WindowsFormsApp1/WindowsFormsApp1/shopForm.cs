@@ -372,7 +372,30 @@ namespace WindowsFormsApp1
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString(labelText, labelFont, Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("-----------------------", labelFont).Width, y);
         }
+        
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sOrder_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is customerinterface)
+                {
+                    form.Close();
+                    break;
+                }
+            }
+
+            
+            var paintForm = new paint_interface();
+            paintForm.Show();
+        }
     }
     }
+
 
 
