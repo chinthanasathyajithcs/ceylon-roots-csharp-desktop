@@ -26,7 +26,9 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            History HistoryFormone = new History(); // <-- use your form class
+            HistoryFormone.Show();
+            this.Hide();
         }
     }
 }
