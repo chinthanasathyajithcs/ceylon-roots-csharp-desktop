@@ -84,6 +84,12 @@
       <DependentUpon>cardProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="categoriesList.cs" />
+    <Compile Include="customer information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customer information.Designer.cs">
+      <DependentUpon>customer information.cs</DependentUpon>
+    </Compile>
     <Compile Include="language change.cs">
       <SubType>Form</SubType>
     </Compile>
