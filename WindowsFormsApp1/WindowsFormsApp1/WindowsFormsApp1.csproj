@@ -96,6 +96,12 @@
     <Compile Include="language change.Designer.cs">
       <DependentUpon>language change.cs</DependentUpon>
     </Compile>
+    <Compile Include="orders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="orders.Designer.cs">
+      <DependentUpon>orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="sellercategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="language change.resx">
       <DependentUpon>language change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="orders.resx">
+      <DependentUpon>orders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sellercategories.resx">
       <DependentUpon>sellercategories.cs</DependentUpon>

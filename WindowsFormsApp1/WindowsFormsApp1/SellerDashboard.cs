@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
             userControl12.Visible = true;        
             inventoryForm1.Visible = false;
             sellercategories1.Visible = false;
+            orders1.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,6 +41,7 @@ namespace WindowsFormsApp1
             userControl12.Visible = false;
             inventoryForm1.Visible = true;
             sellercategories1.Visible = false;
+            orders1.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -47,10 +49,21 @@ namespace WindowsFormsApp1
             userControl12.Visible = false;
             inventoryForm1.Visible = false; 
             sellercategories1.Visible = true;
+            orders1.Visible = false;
         }
 
         private void sellercategories1_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void ordersBtn_Click(object sender, EventArgs e)
+        {
+            userControl12.Visible = false;
+            inventoryForm1.Visible = false;
+            sellercategories1.Visible = false;
+            orders1.Visible = true;
+
 
         }
     }

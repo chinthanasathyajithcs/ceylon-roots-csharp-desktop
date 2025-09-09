@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ordersBtn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.orders1 = new WindowsFormsApp1.orders();
             this.sellercategories1 = new WindowsFormsApp1.sellercategories();
             this.inventoryForm1 = new WindowsFormsApp1.InventoryForm();
             this.userControl12 = new WindowsFormsApp1.UserControl1();
@@ -46,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.panel1.Controls.Add(this.ordersBtn);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -57,15 +60,29 @@
             this.panel1.Size = new System.Drawing.Size(373, 749);
             this.panel1.TabIndex = 0;
             // 
+            // ordersBtn
+            // 
+            this.ordersBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(217)))), ((int)(((byte)(196)))));
+            this.ordersBtn.FlatAppearance.BorderSize = 0;
+            this.ordersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ordersBtn.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.ordersBtn.Location = new System.Drawing.Point(55, 503);
+            this.ordersBtn.Name = "ordersBtn";
+            this.ordersBtn.Size = new System.Drawing.Size(265, 93);
+            this.ordersBtn.TabIndex = 6;
+            this.ordersBtn.Text = "Orders";
+            this.ordersBtn.UseVisualStyleBackColor = false;
+            this.ordersBtn.Click += new System.EventHandler(this.ordersBtn_Click);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(217)))), ((int)(((byte)(196)))));
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 20F);
-            this.button4.Location = new System.Drawing.Point(55, 444);
+            this.button4.Location = new System.Drawing.Point(55, 390);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(265, 119);
+            this.button4.Size = new System.Drawing.Size(265, 93);
             this.button4.TabIndex = 5;
             this.button4.Text = "Categories";
             this.button4.UseVisualStyleBackColor = false;
@@ -92,7 +109,7 @@
             this.button2.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.button2.Location = new System.Drawing.Point(55, 277);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(265, 119);
+            this.button2.Size = new System.Drawing.Size(265, 93);
             this.button2.TabIndex = 3;
             this.button2.Text = "Inventory";
             this.button2.UseVisualStyleBackColor = false;
@@ -121,6 +138,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.orders1);
             this.panel2.Controls.Add(this.sellercategories1);
             this.panel2.Controls.Add(this.inventoryForm1);
             this.panel2.Controls.Add(this.userControl12);
@@ -129,6 +147,13 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(997, 749);
             this.panel2.TabIndex = 2;
+            // 
+            // orders1
+            // 
+            this.orders1.Location = new System.Drawing.Point(0, 0);
+            this.orders1.Name = "orders1";
+            this.orders1.Size = new System.Drawing.Size(997, 749);
+            this.orders1.TabIndex = 7;
             // 
             // sellercategories1
             // 
@@ -189,5 +214,7 @@
         private System.Windows.Forms.Button button4;
         private sellercategories sellercategories1;
         private InventoryForm inventoryForm1;
+        private System.Windows.Forms.Button ordersBtn;
+        private orders orders1;
     }
 }
