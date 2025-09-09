@@ -10,19 +10,23 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Welcome : Form
+    public partial class language_change : Form
     {
-        public Welcome()
+        public language_change()
         {
             InitializeComponent();
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
-            language_change langform = new language_change(); // <-- use your form class
-            langform.Show();
+            History HistoryFormone = new History(); // <-- use your form class
+            HistoryFormone.Show();
             this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

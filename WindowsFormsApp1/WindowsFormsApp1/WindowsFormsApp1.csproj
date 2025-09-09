@@ -84,6 +84,12 @@
       <DependentUpon>cardProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="categoriesList.cs" />
+    <Compile Include="language change.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="language change.Designer.cs">
+      <DependentUpon>language change.cs</DependentUpon>
+    </Compile>
     <Compile Include="sellercategories.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </Compile>
     <EmbeddedResource Include="cardProduct.resx">
       <DependentUpon>cardProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="language change.resx">
+      <DependentUpon>language change.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sellercategories.resx">
       <DependentUpon>sellercategories.cs</DependentUpon>
