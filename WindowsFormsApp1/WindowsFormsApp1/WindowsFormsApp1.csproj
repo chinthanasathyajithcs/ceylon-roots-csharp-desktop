@@ -198,6 +198,9 @@
     <EmbeddedResource Include="cardProduct.resx">
       <DependentUpon>cardProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="customer information.resx">
+      <DependentUpon>customer information.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="language change.resx">
       <DependentUpon>language change.cs</DependentUpon>
     </EmbeddedResource>
