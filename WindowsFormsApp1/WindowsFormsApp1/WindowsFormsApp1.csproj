@@ -216,6 +216,9 @@
     <EmbeddedResource Include="orders.resx">
       <DependentUpon>orders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="paint interface.de.resx">
+      <DependentUpon>paint interface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="sellercategories.resx">
       <DependentUpon>sellercategories.cs</DependentUpon>
     </EmbeddedResource>
