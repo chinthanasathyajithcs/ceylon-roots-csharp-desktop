@@ -31,5 +31,11 @@ namespace WindowsFormsApp1
             HistoryFormtwo.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new customerinterface().Show();
+            this.Hide();
+        }
     }
 }

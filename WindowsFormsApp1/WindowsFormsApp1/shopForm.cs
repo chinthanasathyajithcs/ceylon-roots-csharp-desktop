@@ -381,6 +381,9 @@ namespace WindowsFormsApp1
 
         private void sOrder_Click(object sender, EventArgs e)
         {
+            /*Form2 Form2 = new Form2();
+            Form2.Show();
+            this.Hide();*/
             foreach (Form form in Application.OpenForms)
             {
                 if (form is customerinterface)
@@ -391,8 +394,8 @@ namespace WindowsFormsApp1
             }
 
             
-            var paintForm = new paint_interface();
-            paintForm.Show();
+            var Form2 = new Form2();
+            Form2.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)

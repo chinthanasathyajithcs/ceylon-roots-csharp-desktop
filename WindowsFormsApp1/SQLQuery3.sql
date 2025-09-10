@@ -1,0 +1,1 @@
+﻿INSERT INTO CustomerDelivery(FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark,)VALUES("vagee", 3476897980, vageesha@gmail.com, 0711746789, "fgjghv", 32, gfcgvh, fykj, vhkjb);
