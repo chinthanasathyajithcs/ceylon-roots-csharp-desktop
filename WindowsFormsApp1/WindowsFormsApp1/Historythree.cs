@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string f = @"C:\\Users\\Welcome\\Downloads\\Sri Lankan Handloom Industry _ Skilled weavers.mp4";
+            string f = @"C:\\Users\\USER\\Documents\\Vageesha\\First Year second sem\\C#\\My programmes\\My app\\Git desktop clone\\winforms-starter\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\videos\\Fabric_video.mp4";
             axWindowsMediaPlayer1.URL = f;
             //axWindowsMediaPlayer1.Ctlcontrols.play();
             
