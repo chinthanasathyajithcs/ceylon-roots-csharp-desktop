@@ -394,6 +394,11 @@ namespace WindowsFormsApp1
             var paintForm = new paint_interface();
             paintForm.Show();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 
