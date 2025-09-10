@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAABNFJREFUaEPt
+        mu9vU1UYx5971653LGWlrrTV/nC06yZiwtwSjCAU4ypv3IqJW9AUFmWJxhg1MTE6hb2cIoIvfLGEREiU
+        RN4wQ3TDF3CXlqRFpI1CWKMR2Ca+XOs/MPOt9yQ3Z+16S0/XonuST9b2nnvP8z3nOc9zejqidft/2qNE
+        tJ3/8EGxMBGdlyRpucVmywC8JqLbRPQ2Edn4GxrN4OBlON7/4cfJ966ll1+d+m5x//EvMuDAV2eyjs5Q
+        nIiWNLENaQifpZ2vv5GAgIFPjyXMijJHRDkiUjVyXc/1q9HjJzKSLM83YshhJtL/iriec4QKo54homiR
+        dqe9fX2z0c9PpLVQa6gwG3dtffwqZsLZ3X0BzpZx8A5CbqPbnSKiEf5ivcyGMHnz0mwO4aTNRDkb7xka
+        no2MfQQhCLmGsBFHKFRYF6bm5psGF3HY5vNdf+XM139q4dUQNoWRRaggZPiLJSyMzAbxWlquv8EROIRQ
+        IaKT/PVSZrIofzWSkLBZUbJwCOFVZOFiwe/hOERER9kAaEKOcpxHPcJa4p5XtbEH30bHeliI4C/qiP5a
+        kywttlnkjJ4ed4u6t8N6mQnBQOA948WtNnWi35N+6ynnLeHrB53i4VdGu5f1TEQ8he1HYWRl+e5MrDPH
+        tykFE4L7X37ioSn+OmvD+1KV4YF8J4d7HQmJKKdftDaLaYXYYjy2WUnphSBlB+xKgm9XcyEXD4XQAbYe
+        I9iGYB+ldZrBLPEO6TkV9d/TstudyNiRlLaNicoS/cq3XSshLH6RqVDUTssSzfPO8JyK+lntwPYF972D
+        1y6rOcW3rbkQgFDQEsAgMhFETA765/h2xehuV65ib6ZlMLD05Qu+n/h2SA4GC6wxKyYEjPY64i6rORmw
+        K/FzQ4EF/vpqvL/LlUQG27Z5w8VSA7BmQmqNNnMIPTFWLyF7O6xYQ+KKYr2EDG+zY0bwlUCYrZpSawVS
+        udBtPhYd38la8Nk+z29adhNi28UI6cpNx4Jl6wyPyFoSrkTIu087LzVJtCAR3X2ttz0xfTCYR5qViP4G
+        bRY5jc/4+0pRFyHHnvf8TkT5b3qc6fQzvnyzRPfaW0xxr2JKLe0LLIOdm5TZgN2yYl9VCpG1xLAQpMuo
+        q1VlTkMQRvRsjzPDPru227tg9HmgLkIiwY1JjDhzGjRJtPjjjoez7P3Pu72LiklK8veWYoenNSmqlhgW
+        8u3QlgU4rhfC80FwU6KS0BJZFA0LAXBSH148EDrR/4ih7y1gbI/7hqhaEt7la53hOyjFdCyI7yl5fTjp
+        Z6OSQQEii+I4ppfvYDUmB/xzUhExlc4GQ1QKrlgIOBJ2/4F6wsQgc1lMUpZvZ4S6CgHazMyPeq2q3Sxn
+        UCD5NkYQlYLHB7raDK8RHoiBI/c7G8C+wYQFX7WQk+UOFIwwc7BzxWdGEZWCVRFCquE/I0RULVHPvtRh
+        eEtRC0TVkvvKWCI5N7wlL+IcWP0+FlxxCrjWaLVktZ/zylrd1wjASWSRny0qMvWHWPAX/sHVMjnoz34S
+        8WQYz3ZYVUanXYnjQJyBQ0D8reaMy4Yp1XfIc7jPkdA7AZ50t6h6RwBO7vEsLUT0v70Xzo219MpA8ePB
+        wTf/c7dhw/+R6Dvk4R1goEPekXVbtwfN/gE3gAwAss5hKAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Tragen Sie eine Geschichte</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>„Ich habe mir während meiner Reise nach Sri Lanka eine Tragetasche gekauft, und sie ist mein liebstes Souvenir. Das Design ist wunderschön und erinnert mich immer an meine Reisen.“
+-Emma, ​​Kanada-</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>„Ich war auf der Suche nach etwas echtem Sri Lanka zum Mitnehmen, und diese Tasche war perfekt. Das Design erinnert mich an meine Reise, und ich erzähle meinen Freunden gerne, dass sie von einheimischen Künstlern gefertigt wurde.“
+-Anna, Deutschland-</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>„Ich liebe meine Tragetasche! Das Design ist so einzigartig und ich bekomme überall Komplimente. Dass sie von sri-lankischen Künstlern handgefertigt wurde, macht sie noch besonderer. Es fühlt sich an, als würde ich jeden Tag ein Stück Kultur bei mir tragen.“ – Nadeesha, Colombo –</value>
+  </data>
+  <data name="button3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button3.Text" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+</root>
