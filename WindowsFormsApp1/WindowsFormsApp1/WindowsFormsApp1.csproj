@@ -198,6 +198,9 @@
     <EmbeddedResource Include="cardProduct.resx">
       <DependentUpon>cardProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="customer.de.resx">
+      <DependentUpon>customer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="History.de.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
