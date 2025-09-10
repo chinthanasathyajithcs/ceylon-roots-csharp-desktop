@@ -119,14 +119,14 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-23, 247</value>
+    <value>42, 236</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>395, 374</value>
+    <value>446, 419</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -157,7 +157,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 953</value>
+    <value>532, 953</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -181,7 +181,7 @@
     <value>Bahnschrift, 18pt, style=Bold</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 18</value>
+    <value>317, 19</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 36</value>
@@ -205,7 +205,7 @@
     <value>0</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>456, 339</value>
+    <value>629, 336</value>
   </data>
   <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -262,7 +262,7 @@
     <value>0</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>427, 49</value>
+    <value>629, 53</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -292,7 +292,7 @@
     <value>Bahnschrift, 10.2pt</value>
   </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>932, 592</value>
+    <value>1117, 597</value>
   </data>
   <data name="checkBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -325,7 +325,7 @@
     <value>Bahnschrift, 12pt, style=Bold</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1273, 678</value>
+    <value>1469, 698</value>
   </data>
   <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -361,7 +361,7 @@
     <value>Bahnschrift, 12pt, style=Bold</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1095, 679</value>
+    <value>1296, 699</value>
   </data>
   <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -388,7 +388,7 @@
     <value>7</value>
   </data>
   <data name="textBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1162, 528</value>
+    <value>1347, 533</value>
   </data>
   <data name="textBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -412,7 +412,7 @@
     <value>8</value>
   </data>
   <data name="textBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1162, 462</value>
+    <value>1347, 467</value>
   </data>
   <data name="textBox8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -436,7 +436,7 @@
     <value>9</value>
   </data>
   <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 593</value>
+    <value>814, 598</value>
   </data>
   <data name="textBox7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -460,7 +460,7 @@
     <value>10</value>
   </data>
   <data name="textBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 533</value>
+    <value>814, 538</value>
   </data>
   <data name="textBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -484,7 +484,7 @@
     <value>11</value>
   </data>
   <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 465</value>
+    <value>814, 470</value>
   </data>
   <data name="textBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -514,7 +514,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>926, 533</value>
+    <value>1111, 538</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 24</value>
@@ -544,7 +544,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>926, 465</value>
+    <value>1111, 470</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 24</value>
@@ -574,7 +574,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>430, 591</value>
+    <value>615, 596</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
@@ -604,7 +604,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>430, 531</value>
+    <value>615, 536</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 24</value>
@@ -634,7 +634,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>430, 462</value>
+    <value>615, 467</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 24</value>
@@ -658,7 +658,7 @@
     <value>17</value>
   </data>
   <data name="textBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1162, 249</value>
+    <value>1353, 257</value>
   </data>
   <data name="textBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -685,7 +685,7 @@
     <value>18</value>
   </data>
   <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1162, 179</value>
+    <value>1353, 187</value>
   </data>
   <data name="textBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -712,7 +712,7 @@
     <value>19</value>
   </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 252</value>
+    <value>820, 260</value>
   </data>
   <data name="textBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -736,7 +736,7 @@
     <value>20</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>629, 179</value>
+    <value>820, 187</value>
   </data>
   <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -766,7 +766,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>894, 254</value>
+    <value>1085, 262</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 24</value>
@@ -796,7 +796,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>881, 176</value>
+    <value>1072, 184</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 24</value>
@@ -826,7 +826,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 254</value>
+    <value>615, 262</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 24</value>
@@ -856,7 +856,7 @@
     <value>Bahnschrift, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 176</value>
+    <value>615, 184</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 24</value>
@@ -883,7 +883,7 @@
     <value>Flat</value>
   </data>
   <data name="picImport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>619, 681</value>
+    <value>800, 698</value>
   </data>
   <data name="picImport.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -910,7 +910,7 @@
     <value>0</value>
   </data>
   <data name="picture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>444, 680</value>
+    <value>625, 697</value>
   </data>
   <data name="picture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -943,16 +943,19 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1924, 953</value>
+    <value>1900, 953</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>2500, 1000</value>
+    <value>1918, 1000</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1918, 1000</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>customer</value>

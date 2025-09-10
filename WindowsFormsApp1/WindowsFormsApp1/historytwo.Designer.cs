@@ -39,11 +39,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,7 +58,6 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(217)))), ((int)(((byte)(196)))));
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
@@ -77,6 +76,7 @@
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // label9
@@ -138,6 +138,27 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(217)))), ((int)(((byte)(196)))));
             this.label1.Name = "label1";
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::WindowsFormsApp1.Properties.Resources.images;
+            resources.ApplyResources(this.pictureBox6, "pictureBox6");
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.download;
+            resources.ApplyResources(this.pictureBox5, "pictureBox5");
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.unnamed;
+            resources.ApplyResources(this.pictureBox4, "pictureBox4");
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.TabStop = false;
+            // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
@@ -152,45 +173,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox6
-            // 
-            resources.ApplyResources(this.pictureBox6, "pictureBox6");
-            this.pictureBox6.Image = global::WindowsFormsApp1.Properties.Resources.images;
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            resources.ApplyResources(this.pictureBox5, "pictureBox5");
-            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.download;
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            resources.ApplyResources(this.pictureBox4, "pictureBox4");
-            this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.unnamed;
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox3
             // 
-            resources.ApplyResources(this.pictureBox3, "pictureBox3");
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.maxresdefault;
+            resources.ApplyResources(this.pictureBox3, "pictureBox3");
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.jeevanandaIMG_16811;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources._333922;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 

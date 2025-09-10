@@ -253,6 +253,8 @@ VALUES
             {
                 MessageBox.Show("Error: " + ex.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            new Thank_you_Form().Show();
+            this.Hide();
         }
 
         private void picImport_Click(object sender, EventArgs e)

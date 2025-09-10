@@ -189,7 +189,7 @@
     <value>Microsoft PhagsPa, 12pt, style=Bold</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 29</value>
+    <value>77, 31</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>814, 26</value>
@@ -213,13 +213,13 @@
     <value>0</value>
   </data>
   <data name="pictureBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 465</value>
+    <value>332, 581</value>
   </data>
   <data name="pictureBox7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 150</value>
+    <value>287, 208</value>
   </data>
   <data name="pictureBox7.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -240,13 +240,13 @@
     <value>1</value>
   </data>
   <data name="pictureBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 465</value>
+    <value>644, 581</value>
   </data>
   <data name="pictureBox8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 150</value>
+    <value>287, 208</value>
   </data>
   <data name="pictureBox8.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -267,13 +267,13 @@
     <value>2</value>
   </data>
   <data name="pictureBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 465</value>
+    <value>18, 581</value>
   </data>
   <data name="pictureBox9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 150</value>
+    <value>287, 208</value>
   </data>
   <data name="pictureBox9.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -294,13 +294,13 @@
     <value>3</value>
   </data>
   <data name="pictureBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>301, 270</value>
+    <value>332, 343</value>
   </data>
   <data name="pictureBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox4.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -321,13 +321,13 @@
     <value>4</value>
   </data>
   <data name="pictureBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 270</value>
+    <value>644, 343</value>
   </data>
   <data name="pictureBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox5.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -348,13 +348,13 @@
     <value>5</value>
   </data>
   <data name="pictureBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 270</value>
+    <value>18, 343</value>
   </data>
   <data name="pictureBox6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox6.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -375,13 +375,13 @@
     <value>6</value>
   </data>
   <data name="pictureBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>301, 81</value>
+    <value>332, 104</value>
   </data>
   <data name="pictureBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox3.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -402,13 +402,13 @@
     <value>7</value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 81</value>
+    <value>644, 104</value>
   </data>
   <data name="pictureBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox2.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -429,13 +429,13 @@
     <value>8</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 81</value>
+    <value>18, 104</value>
   </data>
   <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 159</value>
+    <value>293, 217</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -459,7 +459,7 @@
     <value>Microsoft Sans Serif, 7.875pt, style=Bold</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>690, 742</value>
+    <value>798, 844</value>
   </data>
   <data name="button3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -489,7 +489,7 @@
     <value>Microsoft Sans Serif, 7.875pt, style=Bold</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 742</value>
+    <value>612, 844</value>
   </data>
   <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -519,7 +519,7 @@
     <value>Microsoft Sans Serif, 7.875pt, style=Bold</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 742</value>
+    <value>24, 844</value>
   </data>
   <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
