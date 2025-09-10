@@ -393,18 +393,6 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="shopForm1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 17</value>
-  </data>
-  <data name="shopForm1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="shopForm1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1325, 922</value>
-  </data>
-  <data name="shopForm1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;shopForm1.Name" xml:space="preserve">
     <value>shopForm1</value>
   </data>
@@ -442,6 +430,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="shopForm1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="shopForm1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="shopForm1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1325, 922</value>
+  </data>
+  <data name="shopForm1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;shopForm1.Name" xml:space="preserve">
+    <value>shopForm1</value>
+  </data>
+  <data name="&gt;&gt;shopForm1.Type" xml:space="preserve">
+    <value>WindowsFormsApp1.shopForm, WindowsFormsApp1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;shopForm1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;shopForm1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

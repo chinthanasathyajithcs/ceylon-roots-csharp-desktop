@@ -227,6 +227,8 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            new Thank_you_Form().Show();
+            this.Hide();
         }
 
         private int rowIndex = 0;
