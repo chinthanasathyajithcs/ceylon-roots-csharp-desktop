@@ -336,5 +336,9 @@ namespace WindowsFormsApp1
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
+        private void paint_interface_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
