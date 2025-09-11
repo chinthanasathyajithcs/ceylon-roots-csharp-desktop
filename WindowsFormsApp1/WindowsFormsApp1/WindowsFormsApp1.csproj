@@ -292,6 +292,9 @@
     <EmbeddedResource Include="shopForm.resx">
       <DependentUpon>shopForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Thank you Form.de.resx">
+      <DependentUpon>Thank you Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Thank you Form.resx">
       <DependentUpon>Thank you Form.cs</DependentUpon>
     </EmbeddedResource>
