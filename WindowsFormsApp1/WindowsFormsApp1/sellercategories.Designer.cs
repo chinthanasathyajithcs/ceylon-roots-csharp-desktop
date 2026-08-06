@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+namespace WindowsFormsApp1
 {
     partial class sellercategories
     {
@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelCategoryID = new System.Windows.Forms.Label();
+            this.categories_id = new System.Windows.Forms.TextBox();
             this.categories_status = new System.Windows.Forms.ComboBox();
             this.categories_deleteBtn = new System.Windows.Forms.Button();
             this.categories_clearBtn = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.categories_id);
+            this.panel1.Controls.Add(this.labelCategoryID);
             this.panel1.Controls.Add(this.categories_status);
             this.panel1.Controls.Add(this.categories_deleteBtn);
             this.panel1.Controls.Add(this.categories_clearBtn);
@@ -61,6 +65,25 @@
             this.panel1.Size = new System.Drawing.Size(307, 723);
             this.panel1.TabIndex = 0;
             // 
+            // labelCategoryID
+            // 
+            this.labelCategoryID.AutoSize = true;
+            this.labelCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCategoryID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
+            this.labelCategoryID.Location = new System.Drawing.Point(17, 12);
+            this.labelCategoryID.Name = "labelCategoryID";
+            this.labelCategoryID.Size = new System.Drawing.Size(70, 15);
+            this.labelCategoryID.TabIndex = 12;
+            this.labelCategoryID.Text = "Category ID";
+            // 
+            // categories_id
+            // 
+            this.categories_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categories_id.Location = new System.Drawing.Point(20, 30);
+            this.categories_id.Name = "categories_id";
+            this.categories_id.Size = new System.Drawing.Size(262, 24);
+            this.categories_id.TabIndex = 13;
+            // 
             // categories_status
             // 
             this.categories_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -68,7 +91,7 @@
             this.categories_status.Items.AddRange(new object[] {
             "Available",
             "Unavailable"});
-            this.categories_status.Location = new System.Drawing.Point(20, 120);
+            this.categories_status.Location = new System.Drawing.Point(20, 145);
             this.categories_status.Name = "categories_status";
             this.categories_status.Size = new System.Drawing.Size(262, 26);
             this.categories_status.TabIndex = 11;
@@ -139,7 +162,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.label3.Location = new System.Drawing.Point(17, 102);
+            this.label3.Location = new System.Drawing.Point(17, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 15);
             this.label3.TabIndex = 4;
@@ -148,7 +171,7 @@
             // categories_category
             // 
             this.categories_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categories_category.Location = new System.Drawing.Point(20, 53);
+            this.categories_category.Location = new System.Drawing.Point(20, 88);
             this.categories_category.Name = "categories_category";
             this.categories_category.Size = new System.Drawing.Size(262, 24);
             this.categories_category.TabIndex = 3;
@@ -158,11 +181,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
-            this.label2.Location = new System.Drawing.Point(17, 35);
+            this.label2.Location = new System.Drawing.Point(17, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Category";
+            this.label2.Text = "Category Name";
             // 
             // panel2
             // 
@@ -175,6 +198,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(52)))), ((int)(((byte)(46)))));
@@ -234,5 +259,7 @@
         private System.Windows.Forms.Button categories_clearBtn;
         private System.Windows.Forms.Button categories_updateBtn;
         private System.Windows.Forms.ComboBox categories_status;
+        private System.Windows.Forms.Label labelCategoryID;
+        private System.Windows.Forms.TextBox categories_id;
     }
 }

@@ -47,9 +47,9 @@ namespace WindowsFormsApp1
             PictureBox preview = new PictureBox
             {
                 Dock = DockStyle.Fill,
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BackColor = Color.FromArgb(60, 40, 35),
+                BorderStyle = BorderStyle.None
             };
 
             if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))

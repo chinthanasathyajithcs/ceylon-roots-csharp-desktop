@@ -28,6 +28,27 @@ namespace WindowsFormsApp1
             productsList pList = new productsList();
             List<productsList> listData = new productsList().productListData();
             dataGridView2.DataSource = listData;
+
+            // Clean modern grid styling with scrollbars
+            dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+
+            if (dataGridView2.Columns.Contains("ID"))
+            {
+                dataGridView2.Columns["ID"].Visible = false;
+            }
+            if (dataGridView2.Columns.Contains("DateUpdate"))
+            {
+                dataGridView2.Columns["DateUpdate"].Visible = false;
+            }
+            if (dataGridView2.Columns.Contains("date_update"))
+            {
+                dataGridView2.Columns["date_update"].Visible = false;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -200,23 +221,28 @@ namespace WindowsFormsApp1
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
             {
                 DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
-                getID = (int)row.Cells[0].Value;
-                inventory_productID.Text = row.Cells[1].Value.ToString();
-                inventory_productName.Text = row.Cells[2].Value.ToString();
-                inventory_category.Text = row.Cells[3].Value.ToString();
-                inventory_stock.Text = row.Cells[4].Value.ToString();
-                inventory_price.Text = row.Cells[5].Value.ToString();
-                inventory_status.Text = row.Cells[6].Value.ToString();
-                
-                string imagePath = row.Cells[7].Value.ToString();
+                var idVal = row.Cells["ID"]?.Value ?? row.Cells[0]?.Value;
+                if (idVal != null && int.TryParse(idVal.ToString(), out int parsedId))
+                {
+                    getID = parsedId;
+                }
+
+                inventory_productID.Text = row.Cells["productID"]?.Value?.ToString() ?? row.Cells[1]?.Value?.ToString() ?? "";
+                inventory_productName.Text = row.Cells["productName"]?.Value?.ToString() ?? row.Cells[2]?.Value?.ToString() ?? "";
+                inventory_category.Text = row.Cells["category"]?.Value?.ToString() ?? row.Cells[3]?.Value?.ToString() ?? "";
+                inventory_stock.Text = row.Cells["stock"]?.Value?.ToString() ?? row.Cells[4]?.Value?.ToString() ?? "";
+                inventory_price.Text = row.Cells["price"]?.Value?.ToString() ?? row.Cells[5]?.Value?.ToString() ?? "";
+                inventory_status.Text = row.Cells["status"]?.Value?.ToString() ?? row.Cells[6]?.Value?.ToString() ?? "";
+
+                string imagePath = row.Cells["image"]?.Value?.ToString() ?? (row.Cells.Count > 7 ? row.Cells[7]?.Value?.ToString() : "");
 
                 try
                 {
-                    if (imagePath != null)
+                    if (!string.IsNullOrWhiteSpace(imagePath) && System.IO.File.Exists(imagePath))
                     {
                         pictureBox1.Image = Image.FromFile(imagePath);
                     }
@@ -224,14 +250,11 @@ namespace WindowsFormsApp1
                     {
                         pictureBox1.Image = null;
                     }
-
                 }
-                catch(Exception ex) 
+                catch
                 {
-                    MessageBox.Show($"Error:{ex}", "error_Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    pictureBox1.Image = null;
                 }
-
             }
         }
 

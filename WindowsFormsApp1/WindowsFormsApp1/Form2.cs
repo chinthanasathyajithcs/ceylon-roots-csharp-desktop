@@ -21,6 +21,15 @@ namespace WindowsFormsApp1
         {
             try
             {
+                if (comboBox1 != null && comboBox1.SelectedItem != null)
+                {
+                    paint_interface.SelectedBagSize = comboBox1.SelectedItem.ToString();
+                }
+                else if (comboBox1 != null && !string.IsNullOrEmpty(comboBox1.Text))
+                {
+                    paint_interface.SelectedBagSize = comboBox1.Text;
+                }
+
                 paint_interface paintForm = new paint_interface();
                 paintForm.Show();
                 this.Hide();

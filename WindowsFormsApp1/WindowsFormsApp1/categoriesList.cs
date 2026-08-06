@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
 
         public int ID { set; get; }
+        public int categoryID { set; get; }
         public string category { set; get; }
         public string status { set; get; }
         public string DateInsert { set; get; }
@@ -37,6 +38,7 @@ namespace WindowsFormsApp1
                     {
                         categoriesList cData = new categoriesList();
                         cData.ID = Convert.ToInt32(reader["id"]);
+                        cData.categoryID = cData.ID;
                         cData.category = reader["category"] != DBNull.Value ? reader["category"].ToString() : "";
                         
                         int statusIdx = -1;

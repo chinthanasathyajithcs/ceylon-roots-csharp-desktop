@@ -39,9 +39,10 @@ namespace WindowsFormsApp1
 
         private void customer_Load(object sender, EventArgs e)
         {
-            // DateTimePicker removed, so nothing to do here
-            // deliveryDate is already set in the constructor
+
         }
+
+
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
@@ -218,12 +219,14 @@ namespace WindowsFormsApp1
 
                     string query = @"
                         INSERT INTO CustomerDelivery
-                        (FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, LeaveAtReception, ImagePath)
+                        (productID, productName, FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, LeaveAtReception, ImagePath, BagSize)
                         VALUES
-                        (@FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @LeaveAtReception, @ImagePath)";
+                        (@productID, @productName, @FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @LeaveAtReception, @ImagePath, @BagSize)";
 
                     using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@productID", "001");
+                        cmd.Parameters.AddWithValue("@productName", "Custom Tote Bag");
                         cmd.Parameters.AddWithValue("@FullName", textBox1.Text);
                         cmd.Parameters.AddWithValue("@PassportNIC", textBox3.Text);
                         cmd.Parameters.AddWithValue("@Email", textBox2.Text);
@@ -235,6 +238,7 @@ namespace WindowsFormsApp1
                         cmd.Parameters.AddWithValue("@NearestLandmark", textBox7.Text);
                         cmd.Parameters.AddWithValue("@LeaveAtReception", checkBox1.Checked ? 1 : 0);
                         cmd.Parameters.AddWithValue("@ImagePath", finalImagePath ?? "");
+                        cmd.Parameters.AddWithValue("@BagSize", string.IsNullOrEmpty(paint_interface.SelectedBagSize) ? "Small" : paint_interface.SelectedBagSize);
 
                         int rows = cmd.ExecuteNonQuery();
 

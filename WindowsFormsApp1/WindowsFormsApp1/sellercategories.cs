@@ -50,12 +50,18 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            string insertData = "INSERT INTO categories (category, status, date_insert) VALUES(@cat, @status, @date)";
+                            bool hasCustomId = int.TryParse(categories_id.Text.Trim(), out int customId) && customId > 0;
+                            string insertData = hasCustomId ?
+                                "INSERT INTO categories (id, category, status, date_insert) VALUES(@id, @cat, @status, @date)" :
+                                "INSERT INTO categories (category, status, date_insert) VALUES(@cat, @status, @date)";
 
                             using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(insertData, connect))
                             {
+                                if (hasCustomId)
+                                    cmd.Parameters.AddWithValue("@id", customId);
+
                                 cmd.Parameters.AddWithValue("@cat", categories_category.Text.Trim());
-                                cmd.Parameters.AddWithValue("@status", categories_status.SelectedItem.ToString());
+                                cmd.Parameters.AddWithValue("@status", categories_status.SelectedItem != null ? categories_status.SelectedItem.ToString() : categories_status.Text);
 
                                 DateTime today = DateTime.Now;
                                 cmd.Parameters.AddWithValue("@date", today.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -74,8 +80,10 @@ namespace WindowsFormsApp1
 
         void clearfields()
         {
+            categories_id.Clear();
             categories_category.Clear();
             categories_status.SelectedIndex = -1;
+            getID = 0;
         }
 
         private void categories_clearBtn_Click(object sender, EventArgs e)
@@ -89,6 +97,35 @@ namespace WindowsFormsApp1
             List<categoriesList> list = cData.categoriesListData();
 
             dataGridView1.DataSource = list;
+
+            // Clean modern grid styling with scrollbars
+            dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+
+            if (dataGridView1.Columns.Contains("ID"))
+            {
+                dataGridView1.Columns["ID"].Visible = false;
+            }
+            if (dataGridView1.Columns.Contains("categoryID"))
+            {
+                dataGridView1.Columns["categoryID"].HeaderText = "Category ID";
+            }
+            if (dataGridView1.Columns.Contains("category"))
+            {
+                dataGridView1.Columns["category"].HeaderText = "Category Name";
+            }
+            if (dataGridView1.Columns.Contains("status"))
+            {
+                dataGridView1.Columns["status"].HeaderText = "Status";
+            }
+            if (dataGridView1.Columns.Contains("DateInsert"))
+            {
+                dataGridView1.Columns["DateInsert"].HeaderText = "Date Inserted";
+            }
         }
 
         private void inventory_status_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,41 +144,58 @@ namespace WindowsFormsApp1
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                getID = Convert.ToInt32(row.Cells[0].Value);
-                categories_category.Text = row.Cells[1].Value?.ToString();
-                categories_status.Text = row.Cells[2].Value?.ToString();
+                var idVal = row.Cells["categoryID"]?.Value ?? row.Cells["ID"]?.Value ?? row.Cells[0]?.Value;
+                if (idVal != null && int.TryParse(idVal.ToString(), out int parsedId))
+                {
+                    getID = parsedId;
+                }
+
+                categories_id.Text = getID > 0 ? getID.ToString() : "";
+                categories_category.Text = row.Cells["category"]?.Value?.ToString();
+                categories_status.Text = row.Cells["status"]?.Value?.ToString();
             }
         }
 
         private void categories_updateBtn_Click(object sender, EventArgs e)
         {
-            if (getID == 0)
+            int targetId = getID;
+            int newId = targetId;
+
+            if (int.TryParse(categories_id.Text.Trim(), out int inputId) && inputId > 0)
             {
-                MessageBox.Show("Select item first", "Error Messsage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                newId = inputId;
+                if (targetId == 0)
+                    targetId = newId;
             }
-            else
+
+            if (targetId == 0)
             {
-                if (MessageBox.Show($"Are you sure you want to update this ID: {getID}", "Comfirmation Message",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                MessageBox.Show("Please select a category row or enter a valid Category ID to update.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (MessageBox.Show($"Are you sure you want to update Category ID: {targetId}?", "Confirmation Message",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                 {
-                    using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
+                    connect.Open();
+
+                    string statusVal = categories_status.SelectedItem != null ? categories_status.SelectedItem.ToString() : categories_status.Text;
+                    string updateData = "UPDATE categories SET id = @newId, category = @cat, status = @status WHERE id = @targetId";
+
+                    using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(updateData, connect))
                     {
-                        connect.Open();
+                        cmd.Parameters.AddWithValue("@newId", newId);
+                        cmd.Parameters.AddWithValue("@cat", categories_category.Text.Trim());
+                        cmd.Parameters.AddWithValue("@status", statusVal);
+                        cmd.Parameters.AddWithValue("@targetId", targetId);
 
-                        string updateData = "UPDATE categories SET category = @cat, status = @status WHERE ID = @id";
+                        cmd.ExecuteNonQuery();
+                        clearfields();
+                        displayCategories();
 
-                        using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(updateData, connect))
-                        {
-                            cmd.Parameters.AddWithValue("@cat", categories_category.Text.Trim());
-                            cmd.Parameters.AddWithValue("@status", categories_status.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@id", getID);
-
-                            cmd.ExecuteNonQuery();
-                            clearfields();
-                            displayCategories();
-
-                            MessageBox.Show("Updated Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Updated Successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -150,13 +204,18 @@ namespace WindowsFormsApp1
 
         private void categories_deleteBtn_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(categories_id.Text.Trim(), out int inputId) && inputId > 0)
+            {
+                getID = inputId;
+            }
+
             if (getID == 0)
             {
-                MessageBox.Show("Select item first", "Error Messsage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter or select a valid Category ID to delete.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (MessageBox.Show($"Are you sure you want to delete this ID: {getID}", "Comfirmation Message",
+                if (MessageBox.Show($"Are you sure you want to delete Category ID: {getID}?", "Confirmation Message",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())

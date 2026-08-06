@@ -49,6 +49,7 @@ namespace WindowsFormsApp1
         private string imageFolder;
         private DriveService driveService;
         private string currentImagePath;
+        public static string SelectedBagSize = "Small";
 
 
         public struct RECT

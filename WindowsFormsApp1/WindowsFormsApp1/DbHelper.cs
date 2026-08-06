@@ -38,16 +38,36 @@ namespace WindowsFormsApp1
                     string createCategories = @"
                         CREATE TABLE IF NOT EXISTS categories (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            productid TEXT DEFAULT '001',
+                            productname TEXT DEFAULT 'Custom Tote Bag',
                             category TEXT NOT NULL,
                             status TEXT DEFAULT 'Available',
                             date_insert TEXT
                         );";
                     using (var cmd = new SQLiteCommand(createCategories, conn)) { cmd.ExecuteNonQuery(); }
 
-                    // Ensure status column exists in existing database files
+                    // Ensure status, productid, productname columns exist in existing database files
                     try
                     {
                         using (var alterCmd = new SQLiteCommand("ALTER TABLE categories ADD COLUMN status TEXT DEFAULT 'Available';", conn))
+                        {
+                            alterCmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        using (var alterCmd = new SQLiteCommand("ALTER TABLE categories ADD COLUMN productid TEXT DEFAULT '001';", conn))
+                        {
+                            alterCmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        using (var alterCmd = new SQLiteCommand("ALTER TABLE categories ADD COLUMN productname TEXT DEFAULT 'Custom Tote Bag';", conn))
                         {
                             alterCmd.ExecuteNonQuery();
                         }
@@ -86,6 +106,8 @@ namespace WindowsFormsApp1
                     string createDelivery = @"
                         CREATE TABLE IF NOT EXISTS CustomerDelivery (
                             ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                            productID TEXT DEFAULT '001',
+                            productName TEXT DEFAULT 'Custom Tote Bag',
                             FullName TEXT,
                             PassportNIC TEXT,
                             Email TEXT,
@@ -97,14 +119,42 @@ namespace WindowsFormsApp1
                             NearestLandmark TEXT,
                             PreferredDeliveryDate TEXT,
                             LeaveAtReception INTEGER DEFAULT 0,
-                            ImagePath TEXT
+                            ImagePath TEXT,
+                            BagSize TEXT
                         );";
                     using (var cmd = new SQLiteCommand(createDelivery, conn)) { cmd.ExecuteNonQuery(); }
 
-                    // Migration: Ensure ImagePath column exists if table was created previously
+                    // Migration: Ensure ImagePath, BagSize, productID, and productName columns exist if table was created previously
                     try
                     {
                         using (var cmd = new SQLiteCommand("ALTER TABLE CustomerDelivery ADD COLUMN ImagePath TEXT;", conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        using (var cmd = new SQLiteCommand("ALTER TABLE CustomerDelivery ADD COLUMN BagSize TEXT;", conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        using (var cmd = new SQLiteCommand("ALTER TABLE CustomerDelivery ADD COLUMN productID TEXT DEFAULT '001';", conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        using (var cmd = new SQLiteCommand("ALTER TABLE CustomerDelivery ADD COLUMN productName TEXT DEFAULT 'Custom Tote Bag';", conn))
                         {
                             cmd.ExecuteNonQuery();
                         }
@@ -143,6 +193,16 @@ namespace WindowsFormsApp1
                         UPDATE products SET price = 8.50  WHERE (price IS NULL OR price = 0) AND productname LIKE '%Cinnamon Wood Coaster%';
                     ";
                     using (var priceCmd = new SQLiteCommand(updatePrices, conn)) { priceCmd.ExecuteNonQuery(); }
+
+                    // Map products 014-018 to existing images in products_directory
+                    string fixImages = @"
+                        UPDATE products SET image = 'products_directory\010.jpg' WHERE productid = '014' OR (image LIKE '%014.jpg%');
+                        UPDATE products SET image = 'products_directory\011.jpg' WHERE productid = '015' OR (image LIKE '%015.jpg%');
+                        UPDATE products SET image = 'products_directory\008.jpg' WHERE productid = '016' OR (image LIKE '%016.jpg%');
+                        UPDATE products SET image = 'products_directory\006.jpg' WHERE productid = '017' OR (image LIKE '%017.jpg%');
+                        UPDATE products SET image = 'products_directory\001.png' WHERE productid = '018' OR (image LIKE '%018.jpg%');
+                    ";
+                    using (var imgCmd = new SQLiteCommand(fixImages, conn)) { imgCmd.ExecuteNonQuery(); }
                 }
             }
             catch (Exception ex)
