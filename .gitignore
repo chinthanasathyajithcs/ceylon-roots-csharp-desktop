@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Local SQLite runtime database (Keeps customer data 100% private)
+app_data.db
+*.db
+

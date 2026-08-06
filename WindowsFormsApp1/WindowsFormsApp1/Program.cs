@@ -26,6 +26,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"Error: {ex?.Message}\n\n{ex?.StackTrace}", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
 
+            DbHelper.InitializeDatabase();
+
             Application.Run(new LauncherForm());
         }
     }

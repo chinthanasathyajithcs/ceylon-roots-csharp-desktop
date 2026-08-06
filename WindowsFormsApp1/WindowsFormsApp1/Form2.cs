@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,18 +19,15 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
             {
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is customerinterface)
-                    {
-                        form.Close();
-                        break;
-                    }
-                }
-                paint_interface paint_interface = new paint_interface();  // Create an object of Form2
-                paint_interface.Show();               // Show Form2 (non-blocking)
-                this.Hide();                // Hide Form1 (optional)
+                paint_interface paintForm = new paint_interface();
+                paintForm.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error opening paint interface: " + ex.Message, "Navigation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

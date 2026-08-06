@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Google.Apis.Drive.v3;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
 
 namespace WindowsFormsApp1
 {
@@ -30,7 +34,6 @@ namespace WindowsFormsApp1
         public customer()
         {
             InitializeComponent();
-            // Set default delivery date since DateTimePicker is removed
             deliveryDate = DateTime.Now;
         }
 
@@ -170,8 +173,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        { }
+        private void button2_Click(object sender, EventArgs e) { }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
@@ -194,39 +196,33 @@ namespace WindowsFormsApp1
             {
                 ValidateFields();
 
-                using (SqlConnection conn = new SqlConnection(connection))
+                string finalImagePath = imagePath;
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                {
+                    string imageFolder = Path.Combine(Application.StartupPath, "Images");
+                    if (!Directory.Exists(imageFolder))
+                        Directory.CreateDirectory(imageFolder);
+
+                    if (!imagePath.StartsWith(imageFolder, StringComparison.OrdinalIgnoreCase))
+                    {
+                        string ext = Path.GetExtension(imagePath);
+                        string destPath = Path.Combine(imageFolder, $"CustomerPhoto_{DateTime.Now:yyyyMMdd_HHmmss}{ext}");
+                        File.Copy(imagePath, destPath, true);
+                        finalImagePath = destPath;
+                    }
+                }
+
+                using (System.Data.SQLite.SQLiteConnection conn = DbHelper.GetConnection())
                 {
                     conn.Open();
 
-                    // Ensure the table exists
-                    string ensureSql = @"
-IF OBJECT_ID(N'dbo.CustomerDelivery', N'U') IS NULL
-BEGIN
-    CREATE TABLE [dbo].[CustomerDelivery] (
-        ID INT IDENTITY(1,1) PRIMARY KEY,
-        FullName VARCHAR(100),
-        PassportNIC VARCHAR(50),
-        Email VARCHAR(100),
-        Mobile VARCHAR(20),
-        HotelName VARCHAR(100),
-        RoomNumber VARCHAR(20),
-        StreetAddress VARCHAR(200),
-        City VARCHAR(50),
-        NearestLandmark VARCHAR(200),
-        LeaveAtReception BIT,
-        image NVARCHAR(300)
-    );
-END";
-                    using (var cmdEnsure = new SqlCommand(ensureSql, conn))
-                        cmdEnsure.ExecuteNonQuery();
-
-                    // Insert form data
                     string query = @"
-INSERT INTO [dbo].[CustomerDelivery]
-(FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, LeaveAtReception, image)
-VALUES
-(@FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @LeaveAtReception, @image)";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                        INSERT INTO CustomerDelivery
+                        (FullName, PassportNIC, Email, Mobile, HotelName, RoomNumber, StreetAddress, City, NearestLandmark, LeaveAtReception, ImagePath)
+                        VALUES
+                        (@FullName, @PassportNIC, @Email, @Mobile, @HotelName, @RoomNumber, @StreetAddress, @City, @NearestLandmark, @LeaveAtReception, @ImagePath)";
+
+                    using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@FullName", textBox1.Text);
                         cmd.Parameters.AddWithValue("@PassportNIC", textBox3.Text);
@@ -237,13 +233,13 @@ VALUES
                         cmd.Parameters.AddWithValue("@StreetAddress", textBox6.Text);
                         cmd.Parameters.AddWithValue("@City", textBox9.Text);
                         cmd.Parameters.AddWithValue("@NearestLandmark", textBox7.Text);
-                        cmd.Parameters.AddWithValue("@LeaveAtReception", checkBox1.Checked);
-                        cmd.Parameters.AddWithValue("@image", imagePath ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LeaveAtReception", checkBox1.Checked ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@ImagePath", finalImagePath ?? "");
 
                         int rows = cmd.ExecuteNonQuery();
 
                         if (rows > 0)
-                            MessageBox.Show("Data Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Order Data Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
                             MessageBox.Show("No data was saved!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }

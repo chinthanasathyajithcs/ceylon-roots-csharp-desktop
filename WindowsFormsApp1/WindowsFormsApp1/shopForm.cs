@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,8 @@ namespace WindowsFormsApp1
 {
     public partial class shopForm : UserControl
     {
-        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
+        // OLD AZURE CONNECTION STRING (Preserved as requested):
+        // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
 
         public shopForm()
         {
@@ -93,14 +94,14 @@ namespace WindowsFormsApp1
         {
             try
             {
-                using (SqlConnection connect = new SqlConnection(connection))
+                using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                 {
                     connect.Open();
 
                     string selectData = "SELECT * FROM products WHERE status = 'Available'";
-                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(selectData, connect))
                     {
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        System.Data.SQLite.SQLiteDataAdapter adapter = new System.Data.SQLite.SQLiteDataAdapter(cmd);
                         DataTable table = new DataTable();
                         adapter.Fill(table);
 
@@ -108,10 +109,10 @@ namespace WindowsFormsApp1
 
                         foreach (DataRow row in table.Rows)
                         {
-                            int id = row["id"] != DBNull.Value ? (int)row["id"] : 0;
+                            int id = row["id"] != DBNull.Value ? Convert.ToInt32(row["id"]) : 0;
                             string productname = row["productname"] != DBNull.Value ? row["productname"].ToString() : "N/A";
                             string stock = row["stock"] != DBNull.Value ? row["stock"].ToString() : "0";
-                            string price = row["price"] != DBNull.Value ? $"{row["price"]:0.00}" : "0.00";
+                            string price = row["price"] != DBNull.Value ? $"${Convert.ToDecimal(row["price"]):0.00}" : "$0.00";
                             string productId = row["productid"] != DBNull.Value ? row["productid"].ToString() : "N/A";
                             string category = row["category"] != DBNull.Value ? row["category"].ToString() : "N/A";
 
@@ -119,15 +120,22 @@ namespace WindowsFormsApp1
                             if (row["image"] != DBNull.Value)
                             {
                                 string imagePath = row["image"].ToString();
-                                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                                if (!string.IsNullOrEmpty(imagePath))
                                 {
-                                    try
+                                    if (!Path.IsPathRooted(imagePath))
                                     {
-                                        image = Image.FromFile(imagePath);
+                                        imagePath = Path.Combine(Application.StartupPath, imagePath);
                                     }
-                                    catch (Exception ex)
+                                    if (File.Exists(imagePath))
                                     {
-                                        image = null;
+                                        try
+                                        {
+                                            image = Image.FromFile(imagePath);
+                                        }
+                                        catch
+                                        {
+                                            image = null;
+                                        }
                                     }
                                 }
                             }
@@ -139,7 +147,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex}", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -148,87 +156,104 @@ namespace WindowsFormsApp1
 
         }
         bool check = false;
+
+        private bool ValidateAndCalculateAmount()
+        {
+            try
+            {
+                if (decimal.TryParse(shop_total.Text.Replace("$", "").Trim(), out decimal getTotal) &&
+                    decimal.TryParse(textBox1.Text.Replace("$", "").Trim(), out decimal getAmount))
+                {
+                    if (getAmount >= getTotal)
+                    {
+                        check = true;
+                        shop_amount.Text = $"${getAmount - getTotal:0.00}";
+                        return true;
+                    }
+                }
+            }
+            catch { }
+            check = false;
+            return false;
+        }
+
         private void shop_placeOrderBtn_Click(object sender, EventArgs e)
         {
-            if (!check)
+            if (!ValidateAndCalculateAmount())
             {
-                MessageBox.Show("Invalid: Insufficient Amount", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid: Insufficient Amount. Please enter an amount equal to or greater than the Total.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            if (MessageBox.Show("Are you sure you want to proceed?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (MessageBox.Show("Are you sure you want to proceed?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                 {
-                    using (SqlConnection connect = new SqlConnection(connection))
+                    connect.Open();
+
+                    string countData = "SELECT COUNT(*) FROM orders";
+                    int count = 1;
+
+                    using (System.Data.SQLite.SQLiteCommand cData = new System.Data.SQLite.SQLiteCommand(countData, connect))
                     {
-                        connect.Open();
+                        count = Convert.ToInt32(cData.ExecuteScalar()) + 1;
+                    }
 
-                        string countData = "SELECT COUNT(*) FROM orders";
-                        int count = 1;
+                    List<string> productIds = new List<string>();
+                    List<string> quantities = new List<string>();
+                    List<string> prices = new List<string>();
 
-                        using (SqlCommand cData = new SqlCommand(countData, connect))
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["id"].Value != null && row.Cells["QTY"].Value != null && row.Cells["Price"].Value != null)
                         {
-                            count = Convert.ToInt32(cData.ExecuteScalar()) + 1;
+                            productIds.Add(row.Cells["id"].Value.ToString());
+                            quantities.Add(row.Cells["QTY"].Value.ToString());
+                            prices.Add(row.Cells["Price"].Value.ToString());
                         }
+                    }
 
-                        List<string> productIds = new List<string>();
-                        List<string> quantities = new List<string>();
-                        List<string> prices = new List<string>();
+                    string productIdsStr = string.Join(",", productIds);
+                    string quantitiesStr = string.Join(",", quantities);
+                    string pricesStr = string.Join(",", prices);
 
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                    decimal totalAmount = Convert.ToDecimal(shop_total.Text.Replace("$", ""));
+
+                    string insertData = "INSERT INTO orders (customerId, productids, quantities, prices, total, date_order) VALUES(@cid, @pid, @qty, @price, @total, @date)";
+                    using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(insertData, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@cid", $"CID-{count}");
+                        cmd.Parameters.AddWithValue("@pid", productIdsStr);
+                        cmd.Parameters.AddWithValue("@qty", quantitiesStr);
+                        cmd.Parameters.AddWithValue("@price", pricesStr);
+                        cmd.Parameters.AddWithValue("@total", totalAmount);
+
+                        DateTime today = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@date", today.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        int rowAffected = cmd.ExecuteNonQuery();
+
+                        if (rowAffected > 0)
                         {
-                            if (row.Cells["id"].Value != null && row.Cells["QTY"].Value != null && row.Cells["Price"].Value != null)
+                            for (int q = 0; q < productIds.Count; q++)
                             {
-                                productIds.Add(row.Cells["id"].Value.ToString());
-                                quantities.Add(row.Cells["QTY"].Value.ToString());
-                                prices.Add(row.Cells["Price"].Value.ToString());
-                            }
-                        }
-
-                        string productIdsStr = string.Join(",", productIds);
-                        string quantitiesStr = string.Join(",", quantities);
-                        string pricesStr = string.Join(",", prices);
-
-                        decimal totalAmount = Convert.ToDecimal(shop_total.Text.Replace("$", ""));
-
-                        string insertData = "INSERT INTO orders (customerId, productids, quantities, prices, total, date_order) VALUES(@cid, @pid, @qty, @price, @total, @date)";
-                        using (SqlCommand cmd = new SqlCommand(insertData, connect))
-                        {
-                            cmd.Parameters.AddWithValue("@cid", $"CID-{count}");
-                            cmd.Parameters.AddWithValue("@pid", productIdsStr);
-                            cmd.Parameters.AddWithValue("@qty", quantitiesStr);
-                            cmd.Parameters.AddWithValue("@price", pricesStr);
-                            cmd.Parameters.AddWithValue("@total", totalAmount);
-
-                            DateTime today = DateTime.Now;
-                            cmd.Parameters.AddWithValue("@date", today);
-
-                            int rowAffected = cmd.ExecuteNonQuery();
-
-                            if (rowAffected > 0)
-                            {
-                                for (int q = 0; q < productIds.Count; q++)
+                                string updateData = "UPDATE products SET stock = stock - @qty WHERE id = @id";
+                                using (System.Data.SQLite.SQLiteCommand updateCmd = new System.Data.SQLite.SQLiteCommand(updateData, connect))
                                 {
-                                    string updateData = "UPDATE products SET stock = stock - @qty WHERE id = @id";
-                                    using (SqlCommand updateCmd = new SqlCommand(updateData, connect))
-                                    {
-                                        updateCmd.Parameters.AddWithValue("@qty", quantities[q]);
-                                        updateCmd.Parameters.AddWithValue("@id", productIds[q]);
-                                        updateCmd.ExecuteNonQuery();
-                                    }
+                                    updateCmd.Parameters.AddWithValue("@qty", quantities[q]);
+                                    updateCmd.Parameters.AddWithValue("@id", productIds[q]);
+                                    updateCmd.ExecuteNonQuery();
                                 }
-                                MessageBox.Show("Order placed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            else
-                            {
-                                MessageBox.Show("Order placement failed!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            }
+                            MessageBox.Show("Order placed successfully! You can now click the RECEIPT button to view or print your receipt.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Order placement failed!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
-            new Thank_you_Form().Show();
-            this.Hide();
         }
 
         private int rowIndex = 0;
@@ -239,8 +264,6 @@ namespace WindowsFormsApp1
 
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
-
-
         }
 
         private void updateTotalprice()
@@ -258,6 +281,7 @@ namespace WindowsFormsApp1
             }
 
             shop_total.Text = $"{totalprice:F2}";
+            ValidateAndCalculateAmount();
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -269,27 +293,13 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.Enter)
             {
-                try
+                if (!ValidateAndCalculateAmount())
                 {
-                    decimal getTotal = Convert.ToDecimal(shop_total.Text.ToString().Replace("$", ""));
-                    decimal getChange = Convert.ToDecimal(textBox1.Text);
-
-                    if (getTotal > getChange)
-                    {
-                        check = false;
-                        MessageBox.Show("Invalid: Insufficient Amount", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        check = true;
-                        shop_amount.Text = $"${getChange - getTotal:0.00}";
-                        e.SuppressKeyPress = true;
-                    }
+                    MessageBox.Show("Invalid: Insufficient Amount", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (Exception ex)
+                else
                 {
-                    check = false;
-                    MessageBox.Show($"Error: {ex}", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.SuppressKeyPress = true;
                 }
             }
         }
@@ -301,78 +311,106 @@ namespace WindowsFormsApp1
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            float y = 0;
-            int count = 0;
-            int colWidth = 120;
-            int headerMargin = 80;
-            int tableMargin = 20;
-            int rowIndex = 0;
+            Graphics g = e.Graphics;
 
-            Font font = new Font("Arial", 12);
-            Font bold = new Font("Arial", 12, FontStyle.Bold);
-            Font headerFont = new Font("Arial", 16, FontStyle.Bold);
-            Font labelFont = new Font("Arial", 14, FontStyle.Bold);
+            Font titleFont = new Font("Arial", 18, FontStyle.Bold);
+            Font subTitleFont = new Font("Arial", 11, FontStyle.Italic);
+            Font headerFont = new Font("Arial", 11, FontStyle.Bold);
+            Font bodyFont = new Font("Arial", 10, FontStyle.Regular);
+            Font summaryFont = new Font("Arial", 11, FontStyle.Bold);
 
-            float margin = e.MarginBounds.Top;
+            float leftMargin = e.MarginBounds.Left;
+            float topMargin = e.MarginBounds.Top;
+            float rightMargin = e.MarginBounds.Right;
+            float contentWidth = e.MarginBounds.Width;
 
-            StringFormat alignCenter = new StringFormat();
-            alignCenter.Alignment = StringAlignment.Center;
-            alignCenter.LineAlignment = StringAlignment.Center;
+            float currentY = topMargin;
 
-            string headerText = "";
-            y = (margin + count * headerFont.GetHeight(e.Graphics) + headerMargin);
-            e.Graphics.DrawString(headerText, headerFont, Brushes.Black, e.MarginBounds.Left + (dataGridView1.Columns.Count / 2) * colWidth, y, alignCenter);
+            StringFormat centerFormat = new StringFormat { Alignment = StringAlignment.Center };
+            StringFormat rightFormat = new StringFormat { Alignment = StringAlignment.Far };
+            StringFormat leftFormat = new StringFormat { Alignment = StringAlignment.Near };
 
-            count++;
-            y += tableMargin;
+            // 1. Title & Header
+            g.DrawString("PURCHASE RECEIPT", titleFont, Brushes.DarkSlateGray, leftMargin + (contentWidth / 2), currentY, centerFormat);
+            currentY += 30;
 
-            string[] header = { "ProdName", "Category", "Qty", "Price" };
-            for (int q = 0; q < header.Length; q++)
+            g.DrawString("Traditional Handicrafts & Fabric Store", subTitleFont, Brushes.Black, leftMargin + (contentWidth / 2), currentY, centerFormat);
+            currentY += 25;
+
+            g.DrawString($"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}", bodyFont, Brushes.Black, leftMargin, currentY, leftFormat);
+            currentY += 20;
+
+            Pen gridPen = new Pen(Color.LightGray, 1);
+            Pen thickPen = new Pen(Color.Black, 1.5f);
+
+            g.DrawLine(thickPen, leftMargin, currentY, rightMargin, currentY);
+            currentY += 8;
+
+            // 2. Table Headers
+            float colIdX = leftMargin + 10;
+            float colNameX = leftMargin + 70;
+            float colQtyX = leftMargin + 340;
+            float colPriceX = rightMargin - 10;
+
+            g.DrawString("ID", headerFont, Brushes.Black, colIdX, currentY, leftFormat);
+            g.DrawString("Product Name", headerFont, Brushes.Black, colNameX, currentY, leftFormat);
+            g.DrawString("Qty", headerFont, Brushes.Black, colQtyX, currentY, centerFormat);
+            g.DrawString("Price ($)", headerFont, Brushes.Black, colPriceX, currentY, rightFormat);
+
+            currentY += 24;
+            g.DrawLine(thickPen, leftMargin, currentY, rightMargin, currentY);
+            currentY += 6;
+
+            // 3. Draw Grid Rows
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                y = margin + count * bold.GetHeight(e.Graphics) + tableMargin;
-                e.Graphics.DrawString(header[q], bold, Brushes.Black, e.MarginBounds.Left + q * colWidth, y, alignCenter);
+                if (row.IsNewRow) continue;
+
+                string idStr = row.Cells["id"].Value?.ToString() ?? "";
+                string nameStr = row.Cells["prodName"].Value?.ToString() ?? "";
+                string qtyStr = row.Cells["QTY"].Value?.ToString() ?? "1";
+
+                decimal priceVal = 0;
+                if (row.Cells["Price"].Value != null)
+                {
+                    decimal.TryParse(row.Cells["Price"].Value.ToString().Replace("$", ""), out priceVal);
+                }
+                string priceStr = $"${priceVal:0.00}";
+
+                g.DrawString(idStr, bodyFont, Brushes.Black, colIdX, currentY, leftFormat);
+                g.DrawString(nameStr, bodyFont, Brushes.Black, colNameX, currentY, leftFormat);
+                g.DrawString(qtyStr, bodyFont, Brushes.Black, colQtyX, currentY, centerFormat);
+                g.DrawString(priceStr, bodyFont, Brushes.Black, colPriceX, currentY, rightFormat);
+
+                currentY += 22;
+                g.DrawLine(gridPen, leftMargin, currentY, rightMargin, currentY);
+                currentY += 6;
             }
 
-            count++;
-            y += tableMargin;
+            currentY += 10;
+            g.DrawLine(thickPen, leftMargin, currentY, rightMargin, currentY);
+            currentY += 15;
 
-            count++;
-            float rSpace = e.MarginBounds.Bottom - y;
-            while (rowIndex < dataGridView1.Rows.Count)
-            {
-                DataGridViewRow row = dataGridView1.Rows[rowIndex];
+            // 4. Totals Summary
+            string totalStr = shop_total.Text.StartsWith("$") ? shop_total.Text : $"${shop_total.Text}";
+            string amountStr = textBox1.Text.StartsWith("$") ? textBox1.Text : $"${textBox1.Text}";
+            string changeStr = shop_amount.Text.StartsWith("$") ? shop_amount.Text : $"${shop_amount.Text}";
 
-                for (int q = 0; q < dataGridView1.Columns.Count; q++)
-                {
-                    object cellValue = row.Cells[q].Value;
-                    string cell = (cellValue == null) ? string.Empty : cellValue.ToString();
+            g.DrawString($"Total Price:  {totalStr}", summaryFont, Brushes.Black, colPriceX, currentY, rightFormat);
+            currentY += 22;
 
-                    y = margin + count * font.GetHeight(e.Graphics) + tableMargin;
-                    e.Graphics.DrawString(cell, font, Brushes.Black, e.MarginBounds.Left + q * colWidth, y, alignCenter);
-                }
-                count++;
-                rowIndex++;
+            g.DrawString($"Amount Paid:  {amountStr}", bodyFont, Brushes.Black, colPriceX, currentY, rightFormat);
+            currentY += 20;
 
-                if (y + font.GetHeight(e.Graphics) > e.MarginBounds.Bottom)
-                {
-                    e.HasMorePages = true;
-                    return;
-                }
-            }
+            g.DrawString($"Change Due:   {changeStr}", summaryFont, Brushes.DarkGreen, colPriceX, currentY, rightFormat);
+            currentY += 35;
 
-            int labelMargin = (int)Math.Min(rSpace, -40);
-            DateTime today = DateTime.Now;
-            float labelX = e.MarginBounds.Right - e.Graphics.MeasureString("-----------------------", labelFont).Width;
+            // 5. Footer
+            g.DrawLine(gridPen, leftMargin, currentY, rightMargin, currentY);
+            currentY += 10;
+            g.DrawString("Thank you for shopping with us! Please come again.", subTitleFont, Brushes.DimGray, leftMargin + (contentWidth / 2), currentY, centerFormat);
 
-            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
-            e.Graphics.DrawString($"Total Price: \t{shop_total.Text.Trim()}\nAmount:\t{textBox1.Text.Trim()}\n\t----------\nChange:\t{shop_amount.Text.Trim()}", labelFont, Brushes.Black, labelX, y);
-
-            labelMargin = (int)Math.Min(rSpace, -40);
-
-            string labelText = today.ToString();
-
-            y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
-            e.Graphics.DrawString(labelText, labelFont, Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("-----------------------", labelFont).Width, y);
+            e.HasMorePages = false;
         }
         
 

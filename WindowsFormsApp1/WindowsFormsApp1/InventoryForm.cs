@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,8 @@ namespace WindowsFormsApp1
 {
     public partial class InventoryForm : UserControl
     {
-        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
+        // OLD AZURE CONNECTION STRING (Preserved as requested):
+        // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
         public InventoryForm()
         {
             InitializeComponent();
@@ -24,17 +25,10 @@ namespace WindowsFormsApp1
 
         private void displayproducts()
         {
-           
             productsList pList = new productsList();
-
             List<productsList> listData = new productsList().productListData();
             dataGridView2.DataSource = listData;
-
-
-
-
         }
-
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -72,20 +66,19 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Empty Fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             else
             {
-                using (SqlConnection connect = new SqlConnection(connection))
+                using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                 {
                     connect.Open();
 
                     string checkProductId = "SELECT * FROM products WHERE productid = @prodid";
 
-                    using (SqlCommand checkProdId = new SqlCommand(checkProductId, connect))
+                    using (System.Data.SQLite.SQLiteCommand checkProdId = new System.Data.SQLite.SQLiteCommand(checkProductId, connect))
                     {
                         checkProdId.Parameters.AddWithValue("@prodid", inventory_productID.Text.Trim());
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(checkProdId);
+                        System.Data.SQLite.SQLiteDataAdapter adapter = new System.Data.SQLite.SQLiteDataAdapter(checkProdId);
                         DataTable table = new DataTable();
 
                         adapter.Fill(table);
@@ -95,24 +88,22 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-                            string insertData = "INSERT INTO products (productid, productname, category, stock, price, status, image,date_insert) " +
-                                "VALUES(@productid, @productname, @category, @stock, @price, @status,  @image, @date)";
-
-                            string relativepath = Path.Combine("products_directory", inventory_productID.Text.Trim() + "jpg");
-                            string path = Path.Combine(baseDirectory, relativepath);
-
-                            string directoryPath = Path.GetDirectoryName(path);
-
-                            if (!Directory.Exists(directoryPath))
+                            string relativePath = "";
+                            if (!string.IsNullOrEmpty(pictureBox1.ImageLocation) && File.Exists(pictureBox1.ImageLocation))
                             {
-                                Directory.CreateDirectory(directoryPath);
+                                string ext = Path.GetExtension(pictureBox1.ImageLocation);
+                                string fileName = inventory_productID.Text.Trim() + ext;
+                                string productsDir = Path.Combine(Application.StartupPath, "products_directory");
+                                Directory.CreateDirectory(productsDir);
+                                string targetFullPath = Path.Combine(productsDir, fileName);
+                                File.Copy(pictureBox1.ImageLocation, targetFullPath, true);
+                                relativePath = Path.Combine("products_directory", fileName);
                             }
 
-                            File.Copy(pictureBox1.ImageLocation, path, true);
+                            string insertData = "INSERT INTO products (productid, productname, category, stock, price, status, image, date_insert) " +
+                                "VALUES(@productid, @productname, @category, @stock, @price, @status, @image, @date)";
 
-                            using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                            using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(insertData, connect))
                             {
                                 cmd.Parameters.AddWithValue("@productid", inventory_productID.Text.Trim());
                                 cmd.Parameters.AddWithValue("@productname", inventory_productName.Text.Trim());
@@ -120,15 +111,14 @@ namespace WindowsFormsApp1
                                 cmd.Parameters.AddWithValue("@stock", inventory_stock.Text.Trim());
                                 cmd.Parameters.AddWithValue("@price", inventory_price.Text.Trim());
                                 cmd.Parameters.AddWithValue("@status", inventory_status.SelectedItem.ToString());
-                                cmd.Parameters.AddWithValue("@image", path);
-
+                                cmd.Parameters.AddWithValue("@image", relativePath);
 
                                 DateTime today = DateTime.Now;
-                                cmd.Parameters.AddWithValue("@date", today);
+                                cmd.Parameters.AddWithValue("@date", today.ToString("yyyy-MM-dd HH:mm:ss"));
 
                                 cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("Added successfully", "information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 clearFields();
                                 displayproducts();
                             }
@@ -137,21 +127,20 @@ namespace WindowsFormsApp1
                 }
                 displayCategories();
             }
-
         }
 
         public void displayCategories()
         {
             inventory_category.Items.Clear();
 
-            using (SqlConnection connect = new SqlConnection(connection))
+            using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
             {
                 connect.Open();
 
-                string selectcat = "SELECT * FROM categories WHERE status = 'Available'";
-                using (SqlCommand cmd = new SqlCommand(selectcat, connect))
+                string selectcat = "SELECT * FROM categories";
+                using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(selectcat, connect))
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    System.Data.SQLite.SQLiteDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
@@ -159,9 +148,7 @@ namespace WindowsFormsApp1
                         inventory_category.Items.Add(category);
                     }
                 }
-
             }
-
         }
 
         private void inventory_import_Click(object sender, EventArgs e)
@@ -263,17 +250,17 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    using (SqlConnection connect = new SqlConnection(connection))
+                    using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                     {
                         connect.Open();
 
                         string checkProductId = "SELECT * FROM products WHERE productid = @prodid";
 
-                        using (SqlCommand checkProd = new SqlCommand(checkProductId, connect))
+                        using (System.Data.SQLite.SQLiteCommand checkProd = new System.Data.SQLite.SQLiteCommand(checkProductId, connect))
                         {
                             checkProd.Parameters.AddWithValue("@prodid", inventory_productID.Text.Trim());
 
-                            SqlDataAdapter adapter = new SqlDataAdapter(checkProd);
+                            System.Data.SQLite.SQLiteDataAdapter adapter = new System.Data.SQLite.SQLiteDataAdapter(checkProd);
                             DataTable table = new DataTable();
 
                             adapter.Fill(table);
@@ -285,9 +272,9 @@ namespace WindowsFormsApp1
                             else
                             {
                                 string updateData = "UPDATE products SET productid = @prodid, productname = @prodname, category = @cat, " +
-                                    "stock = @stock, price = @price, status = @status, date_update = @date WHERE id = @id";
+                                    "stock = @stock, price = @price, status = @status WHERE id = @id";
 
-                                using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                                using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(updateData, connect))
                                 {
                                     cmd.Parameters.AddWithValue("@prodid", inventory_productID.Text.Trim());
                                     cmd.Parameters.AddWithValue("@prodname", inventory_productName.Text.Trim());
@@ -295,9 +282,6 @@ namespace WindowsFormsApp1
                                     cmd.Parameters.AddWithValue("@stock", inventory_stock.Text.Trim());
                                     cmd.Parameters.AddWithValue("@price", inventory_price.Text.Trim());
                                     cmd.Parameters.AddWithValue("@status", inventory_status.SelectedItem.ToString());
-
-                                    DateTime today = DateTime.Now;
-                                    cmd.Parameters.AddWithValue("@date", today);
                                     cmd.Parameters.AddWithValue("@id", getID);
 
                                     cmd.ExecuteNonQuery();
@@ -308,17 +292,12 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
-
-
-
             }
             displayproducts();
-
         }
 
         private void inventory_delete_Click(object sender, EventArgs e)
         {
-
             if (MessageBox.Show($"Are you sure you want to delete ID {getID}?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (getID == 0)
@@ -327,13 +306,13 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    using (SqlConnection connect = new SqlConnection(connection))
+                    using (System.Data.SQLite.SQLiteConnection connect = DbHelper.GetConnection())
                     {
                         connect.Open();
 
                         string updateData = "DELETE FROM products WHERE id = @id";
 
-                        using (SqlCommand cmd = new SqlCommand(updateData, connect))
+                        using (System.Data.SQLite.SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand(updateData, connect))
                         {
                             cmd.Parameters.AddWithValue("@id", getID);
                             cmd.ExecuteNonQuery();

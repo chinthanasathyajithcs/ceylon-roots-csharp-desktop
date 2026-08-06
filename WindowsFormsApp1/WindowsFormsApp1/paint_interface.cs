@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,73 +61,81 @@ namespace WindowsFormsApp1
         public paint_interface()
         {
             InitializeComponent();
+            LoadQrImage();
+
             imageFolder = Path.Combine(Application.StartupPath, "Images");
             if (!Directory.Exists(imageFolder))
                 Directory.CreateDirectory(imageFolder);
 
-            // Initialize Google Drive API
             InitializeDriveService();
         }
         private void InitializeDriveService()
         {
             try
             {
-                string[] scopes = { DriveService.Scope.DriveReadonly };
-
-                var clientSecrets = new ClientSecrets
+                string serviceAccountFile = Path.Combine(Application.StartupPath, "service_account.json");
+                if (!File.Exists(serviceAccountFile))
                 {
-                    ClientId = "991942011635-v5a807q0v0g94u5mottsl0f4jergdhg3.apps.googleusercontent.com",
-                    ClientSecret = "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"
-                };
+                    string projPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "service_account.json");
+                    if (File.Exists(projPath))
+                    {
+                        serviceAccountFile = projPath;
+                    }
+                }
 
-                // Use a fixed token path in AppData
-                var tokenPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Drive.Auth.Store");
-                var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    clientSecrets,
-                    scopes,
-                    "my_app_user", // fixed user key
-                    CancellationToken.None,
-                    new FileDataStore(tokenPath, true) // 'true' to keep tokens
-                ).Result;
-
-                driveService = new DriveService(new BaseClientService.Initializer()
+                if (File.Exists(serviceAccountFile))
                 {
-                    HttpClientInitializer = credential,
-                    ApplicationName = "PaintUploader"
-                });
+                    string[] scopes = { DriveService.Scope.DriveReadonly, DriveService.Scope.DriveFile };
+                    GoogleCredential credential;
+                    using (var stream = new FileStream(serviceAccountFile, FileMode.Open, FileAccess.Read))
+                    {
+                        credential = GoogleCredential.FromStream(stream).CreateScoped(scopes);
+                    }
+
+                    driveService = new DriveService(new BaseClientService.Initializer()
+                    {
+                        HttpClientInitializer = credential,
+                        ApplicationName = "PaintUploader"
+                    });
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to initialize Google Drive API: " + ex.Message);
-            }
+            catch { }
         }
-        private void UploadFileToDrive(string filePath)
+        private string UploadFileToDrive(string filePath)
         {
+            if (driveService == null || string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+                return filePath;
+
             try
             {
                 var fileMetadata = new Google.Apis.Drive.v3.Data.File()
                 {
                     Name = Path.GetFileName(filePath),
-                    Parents = new List<string> { "1KZFjLkd9fXEUaNJYJ_auX0UCxP1cjWvS" } // your folder id
+                    Parents = new List<string> { "1KskNi1_4yz8HfKykeSosoW0dvPF5OvZb" } 
                 };
 
                 FilesResource.CreateMediaUpload request;
-                using (var stream = new FileStream(filePath, FileMode.Open))
+                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
                     request = driveService.Files.Create(fileMetadata, stream, "image/png");
-                    request.Fields = "id";
+                    request.Fields = "id, webViewLink, webContentLink";
                     request.Upload();
                 }
 
                 var file = request.ResponseBody;
-                MessageBox.Show("Uploaded to Drive. File ID: " + file.Id);
+                if (file != null && !string.IsNullOrEmpty(file.Id))
+                {
+                    string driveLink = $"https://drive.google.com/file/d/{file.Id}/view";
+                    return driveLink;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to upload to Drive: " + ex.Message);
             }
-
+            return filePath;
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -135,50 +143,89 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (!Directory.Exists(imageFolder))
                     Directory.CreateDirectory(imageFolder);
 
-                // Google Drive "images" folder ID
-                string folderId = "1KZFjLkd9fXEUaNJYJ_auX0UCxP1cjWvS";
+                string localPath = null;
 
-                // Query for the latest image
-                var listReq = driveService.Files.List();
-                listReq.Q = $"'{folderId}' in parents and mimeType contains 'image/' and trashed = false";
-                listReq.OrderBy = "createdTime desc, modifiedTime desc";
-                listReq.PageSize = 1;
-                listReq.Fields = "files(id, name, createdTime, modifiedTime)";
-                listReq.SupportsAllDrives = true;
-                listReq.IncludeItemsFromAllDrives = true;
+                // 1. Check for latest previous design in local Images folder
+                var directoryInfo = new DirectoryInfo(imageFolder);
+                var latestLocalFile = directoryInfo.GetFiles("*.*")
+                    .Where(f => f.Extension.Equals(".png", StringComparison.OrdinalIgnoreCase) ||
+                                f.Extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                f.Extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase))
+                    .OrderByDescending(f => f.LastWriteTime)
+                    .FirstOrDefault();
 
-                var result = listReq.Execute();
-                var latest = result.Files.FirstOrDefault();
-
-                if (latest == null)
+                if (latestLocalFile != null)
                 {
-                    MessageBox.Show("No images found in the Drive folder.");
+                    localPath = latestLocalFile.FullName;
+                }
+
+                // 2. Check for newly uploaded photo from Google Drive
+                if (driveService != null)
+                {
+                    try
+                    {
+                        string folderId = "1KskNi1_4yz8HfKykeSosoW0dvPF5OvZb";
+                        var listReq = driveService.Files.List();
+                        listReq.Q = $"'{folderId}' in parents and mimeType contains 'image/' and trashed = false";
+                        listReq.OrderBy = "createdTime desc, modifiedTime desc";
+                        listReq.PageSize = 1;
+                        listReq.Fields = "files(id, name, createdTime, modifiedTime)";
+                        listReq.SupportsAllDrives = true;
+                        listReq.IncludeItemsFromAllDrives = true;
+
+                        var result = listReq.Execute();
+                        var latestDriveFile = result.Files != null ? result.Files.FirstOrDefault() : null;
+
+                        if (latestDriveFile != null)
+                        {
+                            string ext = Path.GetExtension(latestDriveFile.Name);
+                            string drivePath = Path.Combine(imageFolder, $"DriveImage_{DateTime.Now:yyyyMMdd_HHmmss}{ext}");
+
+                            var getReq = driveService.Files.Get(latestDriveFile.Id);
+                            getReq.SupportsAllDrives = true;
+                            using (var fs = new FileStream(drivePath, FileMode.Create, FileAccess.Write))
+                            {
+                                getReq.Download(fs);
+                            }
+                            localPath = drivePath;
+                        }
+                    }
+                    catch { }
+                }
+
+                // 3. Fallback: Open file dialog if no design exists yet
+                if (string.IsNullOrEmpty(localPath) || !File.Exists(localPath))
+                {
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        openFileDialog.Title = "Select a Design or Photo to Edit";
+                        openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string ext = Path.GetExtension(openFileDialog.FileName);
+                            localPath = Path.Combine(imageFolder, $"Photo_{DateTime.Now:yyyyMMdd_HHmmss}{ext}");
+                            File.Copy(openFileDialog.FileName, localPath, true);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                }
+
+                if (!File.Exists(localPath))
+                {
+                    MessageBox.Show("No previous design or photo found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                // Save with unique name to avoid overwriting
-                string ext = Path.GetExtension(latest.Name);
-                string localPath = Path.Combine(imageFolder, $"DriveImage_{DateTime.Now:yyyyMMdd_HHmmss}{ext}");
-
-                var getReq = driveService.Files.Get(latest.Id);
-                getReq.SupportsAllDrives = true;
-                using (var fs = new FileStream(localPath, FileMode.Create, FileAccess.Write))
-                {
-                    getReq.Download(fs);
-                }
-
-                MessageBox.Show($"Downloaded latest image: {localPath}");
-
-                // Set current image path for saving later
                 currentImagePath = localPath;
 
-                // === Open Paint side-by-side with the form ===
                 paintProcess = Process.Start("mspaint.exe", $"\"{localPath}\"");
                 paintProcess.WaitForInputIdle();
 
@@ -211,7 +258,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to open latest image: " + ex.Message);
+                MessageBox.Show("Failed to open previous design: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -269,15 +316,104 @@ namespace WindowsFormsApp1
             }
         }
 
+        private Bitmap CropArtworkCanvas(Bitmap fullWindowBmp)
+        {
+            try
+            {
+                int topRibbonHeight = 240;
+                int statusbarHeight = 35;
+                int sideMargin = 10;
+
+                int canvasX = Math.Min(sideMargin, fullWindowBmp.Width - 1);
+                int canvasY = Math.Min(topRibbonHeight, fullWindowBmp.Height - 1);
+                int canvasW = Math.Max(10, fullWindowBmp.Width - (sideMargin * 2));
+                int canvasH = Math.Max(10, fullWindowBmp.Height - topRibbonHeight - statusbarHeight);
+
+                Rectangle baseRect = new Rectangle(canvasX, canvasY, canvasW, canvasH);
+                Bitmap baseBmp = fullWindowBmp.Clone(baseRect, fullWindowBmp.PixelFormat);
+
+                int whiteMinX = baseBmp.Width, whiteMinY = baseBmp.Height;
+                int whiteMaxX = 0, whiteMaxY = 0;
+                bool foundWhiteCanvas = false;
+
+                for (int y = 0; y < baseBmp.Height; y += 4)
+                {
+                    for (int x = 0; x < baseBmp.Width; x += 4)
+                    {
+                        Color pixel = baseBmp.GetPixel(x, y);
+                        if (pixel.R > 250 && pixel.G > 250 && pixel.B > 250)
+                        {
+                            foundWhiteCanvas = true;
+                            if (x < whiteMinX) whiteMinX = x;
+                            if (x > whiteMaxX) whiteMaxX = x;
+                            if (y < whiteMinY) whiteMinY = y;
+                            if (y > whiteMaxY) whiteMaxY = y;
+                        }
+                    }
+                }
+
+                int startX = foundWhiteCanvas ? whiteMinX : 0;
+                int startY = foundWhiteCanvas ? whiteMinY : 0;
+                int endX = foundWhiteCanvas ? whiteMaxX : baseBmp.Width - 1;
+                int endY = foundWhiteCanvas ? whiteMaxY : baseBmp.Height - 1;
+
+                int strokeMinX = endX, strokeMinY = endY;
+                int strokeMaxX = startX, strokeMaxY = startY;
+                bool foundStrokes = false;
+
+                for (int y = startY; y <= endY; y += 2)
+                {
+                    for (int x = startX; x <= endX; x += 2)
+                    {
+                        Color pixel = baseBmp.GetPixel(x, y);
+                        if (pixel.R < 240 || pixel.G < 240 || pixel.B < 240)
+                        {
+                            foundStrokes = true;
+                            if (x < strokeMinX) strokeMinX = x;
+                            if (x > strokeMaxX) strokeMaxX = x;
+                            if (y < strokeMinY) strokeMinY = y;
+                            if (y > strokeMaxY) strokeMaxY = y;
+                        }
+                    }
+                }
+
+                if (foundStrokes && strokeMaxX > strokeMinX && strokeMaxY > strokeMinY)
+                {
+                    int margin = 30;
+                    int finalX = Math.Max(0, strokeMinX - margin);
+                    int finalY = Math.Max(0, strokeMinY - margin);
+                    int finalW = Math.Min(baseBmp.Width - finalX, (strokeMaxX - strokeMinX) + (margin * 2));
+                    int finalH = Math.Min(baseBmp.Height - finalY, (strokeMaxY - strokeMinY) + (margin * 2));
+
+                    Rectangle finalRect = new Rectangle(finalX, finalY, finalW, finalH);
+                    Bitmap finalBmp = baseBmp.Clone(finalRect, baseBmp.PixelFormat);
+                    baseBmp.Dispose();
+                    return finalBmp;
+                }
+                else if (foundWhiteCanvas && whiteMaxX > whiteMinX && whiteMaxY > whiteMinY)
+                {
+                    Rectangle canvasOnlyRect = new Rectangle(whiteMinX, whiteMinY, (whiteMaxX - whiteMinX) + 1, (whiteMaxY - whiteMinY) + 1);
+                    Bitmap canvasOnlyBmp = baseBmp.Clone(canvasOnlyRect, baseBmp.PixelFormat);
+                    baseBmp.Dispose();
+                    return canvasOnlyBmp;
+                }
+
+                return baseBmp;
+            }
+            catch
+            {
+                return fullWindowBmp;
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             if (paintProcess == null || paintProcess.HasExited)
             {
-                MessageBox.Show("Paint is not open.");
+                MessageBox.Show("Paint is not open.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // If no image path set, create a new one
             if (string.IsNullOrEmpty(currentImagePath))
             {
                 currentImagePath = Path.Combine(imageFolder, $"Drawing_{DateTime.Now:yyyyMMdd_HHmmss}.png");
@@ -285,43 +421,62 @@ namespace WindowsFormsApp1
 
             try
             {
-                Clipboard.SetText(currentImagePath);
-
                 IntPtr paintHandle = paintProcess.MainWindowHandle;
                 if (paintHandle != IntPtr.Zero)
-                    SetForegroundWindow(paintHandle);
-
-                Thread.Sleep(1500);
-
-                // Save file
-                SendKeys.SendWait("^s");
-                Thread.Sleep(1500);
-
-                SendKeys.SendWait("^v");
-                Thread.Sleep(500);
-
-                SendKeys.SendWait("{ENTER}");
-                Thread.Sleep(2000);
-
-                // Close Paint
-                if (!paintProcess.HasExited)
                 {
-                    paintProcess.CloseMainWindow();
-                    paintProcess.WaitForExit(3000);
-                    if (!paintProcess.HasExited)
-                        paintProcess.Kill();
+                    SetForegroundWindow(paintHandle);
+                    ShowWindow(paintHandle, SW_RESTORE);
+                    Thread.Sleep(500);
+
+                    if (GetWindowRect(paintHandle, out RECT rect))
+                    {
+                        int width = rect.Right - rect.Left;
+                        int height = rect.Bottom - rect.Top;
+
+                        if (width > 0 && height > 0)
+                        {
+                            using (Bitmap fullBmp = new Bitmap(width, height))
+                            {
+                                using (Graphics g = Graphics.FromImage(fullBmp))
+                                {
+                                    g.CopyFromScreen(rect.Left, rect.Top, 0, 0, new Size(width, height));
+                                }
+
+                                using (Bitmap artworkBmp = CropArtworkCanvas(fullBmp))
+                                {
+                                    artworkBmp.Save(currentImagePath, System.Drawing.Imaging.ImageFormat.Png);
+                                }
+                            }
+                        }
+                    }
                 }
 
-                MessageBox.Show($"Saved as {currentImagePath}");
+                if (!paintProcess.HasExited)
+                {
+                    paintProcess.Kill();
+                }
 
-                // Open Form2 with the saved image
-                Form3 nextPage = new Form3(currentImagePath);
-                nextPage.Show();
-                this.Hide();
+                if (File.Exists(currentImagePath))
+                {
+                    MessageBox.Show($"Saved drawing successfully: {Path.GetFileName(currentImagePath)}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (driveService != null)
+                    {
+                        UploadFileToDrive(currentImagePath);
+                    }
+
+                    Form3 nextPage = new Form3(currentImagePath);
+                    nextPage.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save drawing file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to save image: " + ex.Message);
+                MessageBox.Show("Failed to save image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         // Add this DllImport to bring Paint to foreground
@@ -336,9 +491,39 @@ namespace WindowsFormsApp1
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
+        private void LoadQrImage()
+        {
+            try
+            {
+                string[] searchPaths = new string[]
+                {
+                    Path.Combine(Application.StartupPath, "Resources", "QR.jpg"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "QR.jpg"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources", "QR.jpg"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources", "QR.jpg"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "Resources", "QR.jpg")
+                };
+
+                foreach (string qrPath in searchPaths)
+                {
+                    if (File.Exists(qrPath))
+                    {
+                        using (var stream = new FileStream(qrPath, FileMode.Open, FileAccess.Read))
+                        {
+                            pictureBox1.Image = Image.FromStream(stream);
+                        }
+                        return;
+                    }
+                }
+
+                pictureBox1.Image = Properties.Resources.QR;
+            }
+            catch { }
+        }
+
         private void paint_interface_Load(object sender, EventArgs e)
         {
-
+            LoadQrImage();
         }
     }
 }
