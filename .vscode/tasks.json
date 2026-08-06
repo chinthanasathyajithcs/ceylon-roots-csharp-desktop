@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/WindowsFormsApp1/WindowsFormsApp1.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Run Application",
+      "type": "shell",
+      "command": "Start-Process '${workspaceFolder}/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/net472/WindowsFormsApp1.exe'",
+      "dependsOn": "build",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

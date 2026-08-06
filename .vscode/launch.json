@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch WindowsFormsApp1",
+      "type": "dotnet",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/net472/WindowsFormsApp1.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/WindowsFormsApp1/WindowsFormsApp1/bin/Debug/net472",
+      "stopAtEntry": false
+    }
+  ]
+}

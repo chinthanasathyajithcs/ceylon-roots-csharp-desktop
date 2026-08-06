@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +14,19 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Welcome());
+
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += (sender, e) =>
+            {
+                MessageBox.Show($"Error: {e.Exception.Message}\n\n{e.Exception.StackTrace}", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                var ex = e.ExceptionObject as Exception;
+                MessageBox.Show($"Error: {ex?.Message}\n\n{ex?.StackTrace}", "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            Application.Run(new LauncherForm());
         }
     }
 }

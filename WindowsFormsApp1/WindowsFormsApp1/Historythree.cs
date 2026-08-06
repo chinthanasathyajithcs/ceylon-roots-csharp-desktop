@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -19,15 +13,52 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string f = @"C:\\Users\\USER\\Documents\\Vageesha\\First Year second sem\\C#\\My programmes\\My app\\Git desktop clone\\winforms-starter\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\videos\\Fabric_video.mp4";
-            axWindowsMediaPlayer1.URL = f;
-            //axWindowsMediaPlayer1.Ctlcontrols.play();
-            
+            string videoPath = Path.Combine(Application.StartupPath, "videos", "Fabric_video.mp4");
+            if (!File.Exists(videoPath))
+            {
+                // Fallback: check project directory
+                string projectVideoPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "videos", "Fabric_video.mp4");
+                if (File.Exists(projectVideoPath))
+                {
+                    videoPath = projectVideoPath;
+                }
+            }
+
+            if (File.Exists(videoPath))
+            {
+                axWindowsMediaPlayer1.URL = videoPath;
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = "Video Files|*.mp4;*.wmv;*.avi;*.mkv|All Files|*.*";
+                    ofd.Title = "Select Fabric Video File";
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        axWindowsMediaPlayer1.URL = ofd.FileName;
+                        axWindowsMediaPlayer1.Ctlcontrols.play();
+
+                        try
+                        {
+                            string targetDir = Path.Combine(Application.StartupPath, "videos");
+                            Directory.CreateDirectory(targetDir);
+                            string targetPath = Path.Combine(targetDir, "Fabric_video.mp4");
+                            if (!File.Exists(targetPath))
+                            {
+                                File.Copy(ofd.FileName, targetPath, true);
+                            }
+                        }
+                        catch { }
+                    }
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            historytwo HistoryFormtwo = new historytwo(); // <-- use your form class
+            historytwo HistoryFormtwo = new historytwo(); 
             HistoryFormtwo.Show();
             this.Hide();
         }
