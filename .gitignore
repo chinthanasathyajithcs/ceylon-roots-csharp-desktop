@@ -421,3 +421,13 @@ FodyWeavers.xsd
 app_data.db
 *.db
 
+# Google OAuth2 Keys, Service Accounts, and API Credentials
+service_account.json
+service_account*.json
+credentials.json
+client_secret*.json
+client_secrets.json
+oauth*.json
+*.apps.googleusercontent.com.json
+gdrive_credentials.json
+

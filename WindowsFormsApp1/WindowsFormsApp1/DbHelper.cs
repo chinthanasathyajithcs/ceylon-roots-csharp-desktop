@@ -9,8 +9,8 @@ namespace WindowsFormsApp1
     public static class DbHelper
     {
         // =========================================================================
-        // ORIGINAL AZURE CONNECTION STRING (Preserved for reference as requested):
-        // public static string AzureConnection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
+        // ORIGINAL AZURE CONNECTION STRING (Preserved for reference):
+        // public static string AzureConnection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=*****;Connect Timeout=30;Encrypt=True";
         // =========================================================================
 
         private static string dbFilePath = Path.Combine(Application.StartupPath, "app_data.db");

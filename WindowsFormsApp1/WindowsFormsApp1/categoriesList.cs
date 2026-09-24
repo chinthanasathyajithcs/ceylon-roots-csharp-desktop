@@ -11,8 +11,8 @@ namespace WindowsFormsApp1
 {
     internal class categoriesList
     {
-        // OLD AZURE CONNECTION STRING (Preserved as requested):
-        // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
+        // OLD AZURE CONNECTION STRING (Preserved as comment):
+        // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=*****;Connect Timeout=30;Encrypt=True";
 
         public int ID { set; get; }
         public int categoryID { set; get; }

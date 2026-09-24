@@ -18,7 +18,8 @@ namespace WindowsFormsApp1
 {
     public partial class customer : Form
     {
-        string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=CSpassword2025;Connect Timeout=30;Encrypt=True";
+        // OLD AZURE CONNECTION STRING (Preserved as comment):
+        // string connection = @"Data Source=csharpproject2025.database.windows.net;Initial Catalog=csharpproject2025;User ID=csharpproject2025;Password=*****;Connect Timeout=30;Encrypt=True";
         string fullName;
         string passportNumber;
         string email;
