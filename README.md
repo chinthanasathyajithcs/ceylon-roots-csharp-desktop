@@ -11,6 +11,12 @@
 
 <br/>
 
+### 🎓 University Coursework Project
+**Academic Module:** 1st Year — Object-Oriented Programming (OOP) with C#  
+**Core Competencies:** Layered desktop architecture, offline-first SQLite persistence, interactive GDI+ digital canvas graphics, and dual-language localization (EN / DE).
+
+<br/>
+
 **A multi-tier desktop enterprise application engineered in C# WinForms for artisan retail, unifying point-of-sale checkout, real-time inventory management, localized multi-language customer kiosks, and an interactive digital customizer studio.**
 
 <br/>
@@ -24,23 +30,23 @@
 <div align="center">
   <table border="0" style="width:100%; text-align:center;">
     <tr>
-      <td width="50%" align="center">
-        <b>🛒 Point of Sale & Storefront</b><br/>
-        <img src="images/shop.png" alt="Product Catalog & POS" width="100%" style="border-radius:6px; margin-top:6px;" />
+      <td width="50%" align="center" valign="top">
+        <h3>🛒 Point of Sale & Storefront</h3>
+        <img src="images/shop.png" alt="Product Catalog & POS" width="100%" style="border-radius:6px; margin-top:6px; box-shadow:0 4px 12px rgba(0,0,0,0.12);" />
       </td>
-      <td width="50%" align="center">
-        <b>🎨 Interactive Canvas Bag Designer</b><br/>
-        <img src="images/canvas_bag_painter.png" alt="Canvas Bag Painter" width="100%" style="border-radius:6px; margin-top:6px;" />
+      <td width="50%" align="center" valign="top">
+        <h3>🎨 Interactive Canvas Bag Designer</h3>
+        <img src="images/canvas_bag_painter.png" alt="Canvas Bag Painter" width="100%" style="border-radius:6px; margin-top:6px; box-shadow:0 4px 12px rgba(0,0,0,0.12);" />
       </td>
     </tr>
     <tr>
-      <td width="50%" align="center">
-        <b>📦 Seller Inventory Management</b><br/>
-        <img src="images/inventory_management.png" alt="Inventory Management" width="100%" style="border-radius:6px; margin-top:6px;" />
+      <td width="50%" align="center" valign="top">
+        <h3>📦 Seller Inventory Management</h3>
+        <img src="images/inventory_management.png" alt="Inventory Management" width="100%" style="border-radius:6px; margin-top:6px; box-shadow:0 4px 12px rgba(0,0,0,0.12);" />
       </td>
-      <td width="50%" align="center">
-        <b>🚚 Customer Delivery & Order Fulfillment</b><br/>
-        <img src="images/customer_checkout.png" alt="Customer Checkout" width="100%" style="border-radius:6px; margin-top:6px;" />
+      <td width="50%" align="center" valign="top">
+        <h3>🚚 Customer Delivery & Order Fulfillment</h3>
+        <img src="images/customer_checkout.png" alt="Customer Checkout" width="100%" style="border-radius:6px; margin-top:6px; box-shadow:0 4px 12px rgba(0,0,0,0.12);" />
       </td>
     </tr>
   </table>
@@ -54,7 +60,9 @@ Artisan retail businesses frequently struggle with fragmented tooling: separate 
 
 **Ceylon Roots** provides an all-in-one, offline-resilient desktop management suite tailored for handcrafted Sri Lankan goods. The system integrates real-time inventory controls, an interactive customer-facing product personalization studio, dual-language localization (English & German), and high-throughput POS checkout—all powered by an automated, zero-configuration local SQLite data engine.
 
-> **Architecture Note:** The application was initially engineered with **Microsoft Azure SQL Database** for cloud synchronization. To ensure zero-dependency local evaluation, offline resilience, and fast testability, the persistence layer was modernized to an embedded **SQLite (`System.Data.SQLite`)** engine that automatically bootstraps the local database (`app_data.db`) on startup.
+### 💡 Architectural Evolution & Design Decisions (ADR)
+* **🗄️ Database Modernization (Azure SQL ➔ Zero-Setup Embedded SQLite):**  
+  The application was initially engineered with **Microsoft Azure SQL Database** for cloud synchronization. To ensure zero-dependency local evaluation, offline resilience, and fast testability, the persistence layer was modernized to an embedded **SQLite (`System.Data.SQLite`)** engine that automatically bootstraps the local database (`app_data.db`) on startup.
 
 ---
 
